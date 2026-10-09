@@ -196,41 +196,36 @@ const STEPS = [
       <div><p class="q">Will the photos hang in your home?</p>${chips("room", [ROOM_YES, "No"], A.room)}</div>
     </div>`, ok: () => ""},
 
-  {id: "extra", render: () => `
+  {id: "extra", render: () => {
+    const room = A.room === ROOM_YES;
+    const photos = A.own.trim() || room;
+    return `
     <div class="step">
       <span class="eyebrow">6 of 6</span>
       <h2>Anything else I should know?</h2>
       <p class="sub">Optional. Comfort needs, pregnancy, mobility or sensory needs, modesty, or anything you're nervous about.</p>
       <textarea data-f="extra">${esc(A.extra)}</textarea>
-    </div>`, ok: () => ""},
-
-  {id: "send", render: () => {
-    const t = answersText();
-    const room = A.room === ROOM_YES;
-    const photos = A.own.trim() || room;
-    const tip = photos ? `Before you send, attach your photos${A.own.trim() ? " of the pieces you own" : ""}${room ? (A.own.trim() ? " and" : "") + " of the room" : ""}.` : "";
-    const go = m => CFG.send + "#" + packed({s: CFG.studio, e: CFG.email, p: CFG.sms, j: `Outfit questions: ${familyLabel()}`, b: t, t: tip, m});
-    return `
-    <div class="step">
-      <span class="eyebrow">All done</span>
-      <h2>Send your answers to ${esc(CFG.studio)}</h2>
-      <div class="sum">
-        <div><b>Who's coming</b>${A.people.map(p => esc(personLine(p))).join("<br>")}</div>
-        <div><b>Dress level</b>${esc(A.level)}</div>
-        <div><b>Prints</b>${esc(A.prints)}</div>
-      </div>
-      ${photos ? `<p class="tip">Before you send, attach your photos${A.own.trim() ? " of the pieces you own" : ""}${room ? (A.own.trim() ? " and" : "") + " of the room" : ""}.</p>` : ""}
+      ${photos ? `<p class="tip">Your ${CFG.sms && !CFG.email ? "text" : "email"} opens next with everything written in. Attach your photos${A.own.trim() ? " of the pieces you own" : ""}${room ? (A.own.trim() ? " and" : "") + " of the room" : ""}, then hit send.</p>` : `<p class="sub">Your ${CFG.sms && !CFG.email ? "text" : "email"} opens next with everything written in. Just hit send.</p>`}
       <div class="send">
-        ${CFG.sms ? `<a class="btn" href="${esc(go("sms"))}" target="_blank" rel="noopener">Text my answers</a>` : ""}
-        ${CFG.email ? `<a class="btn ${CFG.sms ? "ghost" : ""}" style="flex:1" href="${esc(go("email"))}" target="_blank" rel="noopener">Email my answers</a>` : ""}
-        <button type="button" class="btn ghost" style="flex:1" id="copy">Copy my answers</button>
+        ${CFG.email ? `<a class="btn" data-m="email" target="_blank" rel="noopener">Email my answers to ${esc(CFG.studio)}</a>` : ""}
+        ${CFG.sms ? `<a class="btn ${CFG.email ? "ghost" : ""}" data-m="sms" target="_blank" rel="noopener">Text my answers${CFG.email ? " instead" : ` to ${esc(CFG.studio)}`}</a>` : ""}
+        ${!CFG.email && !CFG.sms ? `<button type="button" class="btn" id="copy">Copy my answers</button>` : ""}
       </div>
-      <p class="sub" id="copied" hidden>Copied! Paste it into a text or email to ${esc(CFG.studio)}${CFG.email ? ` (${esc(CFG.email)})` : ""}${CFG.phone ? ` or ${esc(CFG.phone)}` : ""}.</p>
-      <textarea class="raw" id="raw" readonly hidden>${esc(t)}</textarea>
-      <p class="done">Thank you! Your outfit page is on its way soon.</p>
-      <button type="button" class="link" id="edit" style="align-self:center">Go back and change something</button>
+      <p class="sub" id="copied" hidden></p>
+      <textarea class="raw" id="raw" readonly hidden></textarea>
     </div>`;
   }, ok: () => ""},
+
+  {id: "thanks", render: () => `
+    <div class="step" style="text-align:center;align-items:center">
+      <span class="eyebrow">All done</span>
+      <p class="done">Thank you, ${esc(A.who.trim())}!</p>
+      <p class="sub">Hit send in your ${CFG.sms && !CFG.email ? "texts" : "email"} and ${esc(CFG.studio)} will put together your outfit page.</p>
+      <button type="button" class="btn ghost" id="copy" style="flex:0 0 auto">Didn't open? Copy my answers</button>
+      <p class="sub" id="copied" hidden></p>
+      <textarea class="raw" id="raw" readonly hidden></textarea>
+      <button type="button" class="link" id="edit">Go back and change something</button>
+    </div>`, ok: () => ""},
 ];
 
 // Answers ride in the URL #fragment, which browsers never send to the server: they stay on the client's phone.
@@ -239,6 +234,12 @@ function packed(o) {
   let bin = ""; bytes.forEach(b => bin += String.fromCharCode(b));
   return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
+function sendUrl(m) {
+  const room = A.room === ROOM_YES;
+  const tip = (A.own.trim() || room) ? `Attach your photos${A.own.trim() ? " of the pieces you own" : ""}${room ? (A.own.trim() ? " and" : "") + " of the room" : ""} before you send.` : "";
+  return CFG.send + "#" + packed({s: CFG.studio, e: CFG.email, p: CFG.sms, j: `Outfit questions: ${familyLabel()}`, b: answersText(), t: tip, m});
+}
+function refreshSend() { main.querySelectorAll("a[data-m]").forEach(a => { a.href = sendUrl(a.dataset.m); }); }
 function familyLabel() {
   const f = A.family.trim();
   return f ? `The ${f} family` : `${A.who.trim()}'s family`;
@@ -264,7 +265,7 @@ function answersText() {
 }
 
 let cur = 0, err = "";
-try { const c = Number(sessionStorage.getItem(KEY + "-step")); if (c > 0 && c < STEPS.length) cur = c; } catch (e) {}
+try { const c = Number(sessionStorage.getItem(KEY + "-step")); if (c > 0 && c < STEPS.length - 1) cur = c; } catch (e) {}
 const main = document.getElementById("main"), bar = document.getElementById("bar");
 const back = document.getElementById("back"), next = document.getElementById("next"), nav = document.getElementById("nav");
 
@@ -273,9 +274,11 @@ function render(focusTop) {
   main.innerHTML = s.render() + (err ? `<p class="err" role="alert">${esc(err)}</p>` : "");
   bar.style.width = (cur / (STEPS.length - 1) * 100) + "%";
   back.hidden = cur === 0;
-  next.hidden = s.id === "send";
-  nav.hidden = s.id === "send";
-  next.textContent = cur === 0 ? "Start" : (STEPS[cur + 1] && STEPS[cur + 1].id === "send" ? "Review" : "Next");
+  next.hidden = s.id === "extra";
+  nav.hidden = s.id === "thanks";
+  next.textContent = cur === 0 ? "Start" : "Next";
+  refreshSend();
+  const raw = document.getElementById("raw"); if (raw) raw.value = answersText();
   try { sessionStorage.setItem(KEY + "-step", cur); } catch (e) {}
   if (focusTop) { window.scrollTo(0, 0); const h = main.querySelector("h1,h2"); if (h) { h.tabIndex = -1; h.focus({preventScroll: true}); } }
 }
@@ -284,7 +287,7 @@ main.addEventListener("input", ev => {
   const t = ev.target;
   if (t.dataset.f) A[t.dataset.f] = t.value;
   if (t.dataset.p) A.people[+t.dataset.i][t.dataset.p] = t.value;
-  save();
+  save(); refreshSend();
 });
 main.addEventListener("click", ev => {
   const c = ev.target.closest(".chip");
@@ -302,9 +305,12 @@ main.addEventListener("click", ev => {
   if (ev.target.id === "addp") { A.people.push(blank()); save(); render(false); const ins = main.querySelectorAll("input[data-p=name]"); ins[ins.length - 1].focus(); return; }
   if (ev.target.dataset.rm != null) { A.people.splice(+ev.target.dataset.rm, 1); save(); render(false); return; }
   if (ev.target.id === "edit") { cur = STEPS.length - 2; render(true); return; }
+  const send = ev.target.closest("a[data-m]");
+  if (send) { refreshSend(); setTimeout(() => { cur = STEPS.length - 1; render(true); }, 400); return; }
   if (ev.target.id === "copy") {
     const raw = document.getElementById("raw"), msg = document.getElementById("copied");
-    const show = () => { msg.hidden = false; };
+    raw.value = answersText();
+    const show = () => { msg.hidden = false; msg.textContent = "Copied! Paste it into a text or email to " + CFG.studio + (CFG.email ? " (" + CFG.email + ")" : "") + (CFG.phone ? " or " + CFG.phone : "") + "."; };
     const fallback = () => { raw.hidden = false; raw.focus(); raw.select(); msg.hidden = false; msg.textContent = "Select all and copy, then paste it into a text or email to " + CFG.studio + "."; };
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(raw.value).then(show, fallback); else fallback();
   }
