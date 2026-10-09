@@ -33,12 +33,12 @@
       "label": "Big sister",
       "items": [
         "G-TOP-002",
-        "G-BTM-001",
+        "G-BTM-004",
         "G-SHO-001"
       ],
       "note": {
         "text": "one soft\nprint",
-        "points_to": "G-BTM-001"
+        "points_to": "G-BTM-004"
       }
     },
     {

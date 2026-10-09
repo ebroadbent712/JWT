@@ -41,6 +41,8 @@ PX_PER_PT = 4  # resolution of the composited outfit panels
 MAX_REL = {"hero": 1.0, "layer": 0.9, "bottom": 0.95, "shoes": 0.45, "accent": 0.3}
 WEIGHT = {"hero": 1.7, "layer": 1.0, "bottom": 1.0, "shoes": 0.75, "accent": 0.45}
 SMALL_ACCENTS = {"accessory"}
+VIEW_COLS = None  # the client page can lay the board out two people across (better on a phone)
+HIDE_LABELS = False  # the client page shows the panels without number labels (the cards name every piece)
 OWNED = set()  # item ids the client already owns (filled from the plan)
 TIERS = [("everyday", "Everyday"), ("mid", "Mid"), ("splurge", "Splurge")]
 
@@ -126,6 +128,11 @@ def choose_layout(items, area_w, area_h):
             # Real flat lays read top to bottom: the main piece sits above the bottoms.
             if "hero" in centers and "bottom" in centers and min(centers["hero"]) > min(centers["bottom"]) + 0.02:
                 score *= 0.55
+            # a dress is never drawn smaller than a layer beside it
+            hero_area = max((p[3] * p[4] for p in placed if p[0]["layout_role"] == "hero" and p[0]["category"] == "dress"), default=0)
+            other_area = max((p[3] * p[4] for p in placed if p[0]["layout_role"] != "hero"), default=0)
+            if hero_area and hero_area < other_area * 0.95:
+                score *= 0.6
             if best is None or score > best[0]:
                 best = (score, placed)
     return best[1]
@@ -266,6 +273,11 @@ def client_photo(path, crop=None):
     return im
 
 
+def _view_height(n):
+    rows = -(-n // VIEW_COLS)
+    return 62 + 30 + rows * 330 + 100 + 30
+
+
 def grid_rows(n):
     # big families: spread people evenly over three rows instead of leaving a near-empty last row
     fixed = {1: [1], 2: [2], 3: [3], 4: [2, 2], 5: [2, 3], 6: [3, 3], 7: [3, 4], 8: [4, 4],
@@ -356,6 +368,8 @@ def board_palette(plan, items_by_id, catalog, limit=12):
 
 def draw_board_page(c, plan, settings, items_by_id, numbering):
     PW, PH = letter
+    if VIEW_COLS:
+        PH = _view_height(len(plan["people"]))
     M = 30
     # Header
     c.setFillColor(INK)
@@ -374,6 +388,8 @@ def draw_board_page(c, plan, settings, items_by_id, numbering):
     bottom = M + footer_h
     people = plan["people"]
     rows = grid_rows(len(people))
+    if VIEW_COLS:
+        rows = [VIEW_COLS] * (len(people) // VIEW_COLS) + ([len(people) % VIEW_COLS] if len(people) % VIEW_COLS else [])
     weights = [1.15 if i == 0 and len(rows) > 1 and rows[0] < rows[-1] else 1.0 for i in range(len(rows))]
     total_h = top - bottom
     row_hs = [total_h * w / sum(weights) for w in weights]
@@ -383,16 +399,18 @@ def draw_board_page(c, plan, settings, items_by_id, numbering):
     idx, y_cursor = 0, top
     for r, count in enumerate(rows):
         rh = row_hs[r]
-        pw_ = (PW - 2 * M) / count
+        pw_ = (PW - 2 * M) / (VIEW_COLS or count)
+        x_off = ((VIEW_COLS or count) - count) * pw_ / 2  # a lone last panel sits centered
         if r > 0:
             c.line(M, y_cursor, PW - M, y_cursor)
         for col in range(count):
             person = people[idx]
-            px = M + col * pw_
+            px = M + x_off + col * pw_
             if col > 0:
                 c.setStrokeColor(RULE)
                 c.line(px, y_cursor - 8, px, y_cursor - rh + 8)
             draw_person_panel(c, person, items_by_id, numbering, px + 10, y_cursor - rh + 6, pw_ - 20, rh - 12, count)
+            plan.setdefault("_panels", []).append({"label": person["label"], "x": px / PW, "y": 1 - y_cursor / PH, "w": pw_ / PW, "h": rh / PH})
             idx += 1
         y_cursor -= rh
     c.setStrokeColor(RULE)
@@ -603,7 +621,7 @@ def draw_person_panel(c, person, items_by_id, numbering, x, y, w, h, per_row):
         taken.append((spot[0], spot[1], tw, th * len(text)))
         c.setFillColor(INK)
         c.setFont("Inter", fs)
-        for li, t in enumerate(text):
+        for li, t in enumerate(text if not HIDE_LABELS else []):
             bx, by = to_pdf(spot[0], spot[1] + fs + li * th)
             c.drawString(bx, by, t)
 
@@ -913,15 +931,17 @@ def build(plan_path, out_dir):
     os.makedirs(out_dir, exist_ok=True)
     slug = slugify(plan["family_name"])
     pdf_path = os.path.join(out_dir, f"{slug}-board.pdf")
-    c = canvas.Canvas(pdf_path, pagesize=letter)
+    c = canvas.Canvas(pdf_path, pagesize=(letter[0], _view_height(len(plan["people"]))) if VIEW_COLS else letter)
     c.setTitle(f"Just Wear This — {plan['family_name']}")
     c.setAuthor(settings.get("studio_name", "Just Wear This"))
     draw_board_page(c, plan, settings, items_by_id, numbering)
     c.showPage()
+    c.setPageSize(letter)
     draw_details_page(c, plan, settings, items_by_id, numbering, uses)
     c.showPage()
     c.save()
     print(f"Board PDF: {pdf_path}")
+    json.dump(plan.get("_panels", []), open(os.path.join(out_dir, f"{slug}-panels.json"), "w"))
 
     preview = os.path.join(out_dir, f"{slug}-board-preview")
     try:
