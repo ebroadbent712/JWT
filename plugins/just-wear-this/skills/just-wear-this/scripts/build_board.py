@@ -629,11 +629,13 @@ def draw_person_panel(c, person, items_by_id, numbering, x, y, w, h, per_row):
         hit = 0
         for k in range(1, n):
             qx, qy = sx + (tx - sx) * k / n, sy + (ty - sy) * k / n
+            # labels often sit in the white margin inside the target's box, so check them first
+            if any(tx_ - 1 <= qx <= tx_ + tw_ + 1 and ty_ - 1 <= qy <= ty_ + th_ + 1 for tx_, ty_, tw_, th_ in taken):
+                hit += 6
+                continue
             if tx0 - 4 <= qx <= tx0 + tw0 + 4 and ty0 - 4 <= qy <= ty0 + th0 + 4:
-                break  # reached the target
+                continue  # inside the target's box: only labels count here
             if 0 <= qy < occ.shape[0] and 0 <= qx < occ.shape[1] and occ[int(qy), int(qx)]:
-                hit += 2
-            elif any(tx_ - 1 <= qx <= tx_ + tw_ + 1 and ty_ - 1 <= qy <= ty_ + th_ + 1 for tx_, ty_, tw_, th_ in taken):
                 hit += 2
         return hit
 
@@ -722,7 +724,12 @@ def draw_details_page(c, plan, settings, items_by_id, numbering, uses):
     heading("Shop the look")
     c.setFont("Inter", 7.6)
     c.setFillColor(SOFT)
-    c.drawString(M, y, "Every piece comes at three price points. Mix and match: splurge on the favorite, save on the rest.")
+    def _links(it):
+        return it.get("shop_links") or ({"mid": it["shop_url"]} if it.get("shop_url") else {})
+    gaps = any(len([k for k, _ in TIERS if _links(items_by_id[i]).get(k)]) < len(TIERS)
+               for i in numbering if i not in OWNED)
+    c.drawString(M, y, ("Most pieces come at more than one price point. " if gaps else "Every piece comes at three price points. ")
+                 + "Mix and match: splurge on the favorite, save on the rest.")
     y -= 18
     col_x = [PW - M - 150, PW - M - 92, PW - M - 38]  # left edges of the tier columns
 
@@ -752,15 +759,16 @@ def draw_details_page(c, plan, settings, items_by_id, numbering, uses):
         y -= 40
 
     table_header()
-    checklist_h = 40 + sum(13.5 * len(wrap(t, "Inter", 9.3, PW - 2 * M - 18)) + 4 for t in plan.get("prep_checklist", []))
+    checklist_h = 26 + sum(13.5 * len(wrap(t, "Inter", 9.3, PW - 2 * M - 18)) + 4 for t in plan.get("prep_checklist", []))
     footer_h = 50
     rows = sorted(numbering.items(), key=lambda kv: kv[1])
     n = max(1, len(rows))
-    # 1) table + checklist on this page with rows at least 16pt apart; 2) else the whole table here and the
+    # 1) table + checklist on this page with rows at least 15pt apart; 2) else the whole table here and the
     # checklist on the next page; 3) else full-size rows carried across pages. Never shrink below readable.
     with_list = (y - checklist_h - footer_h - M - 24) / n
     table_only = (y - M - 40 - 18) / n
-    if with_list >= 16:
+    # a 15pt row is still easy to tap, and it beats a third page holding only the checklist
+    if with_list >= 15:
         step = min(20.0, with_list)
     elif table_only >= 16:
         step = min(20.0, table_only)
