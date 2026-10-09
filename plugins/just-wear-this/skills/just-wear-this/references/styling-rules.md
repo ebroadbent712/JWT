@@ -66,7 +66,7 @@ Palettes live in `library/catalog.json`. Choosing a story:
 
 **Baby boys get a soft set first** (a sweater-and-pants or cardigan set). Use a knit romper only when no set fits the story.
 
-**Baby girl or boy:** the questionnaire or the photographer says which. Baby pieces carry `baby_for` (`girl`, `boy` or `either`); only use matching or `either` pieces. If it isn't clear, ask in the same one-line message as any other missing detail.
+**Baby girl or boy:** the questionnaire or the photographer says which. Baby pieces carry `baby_for` (`girl`, `boy` or `either`); only use matching or `either` pieces. If the client chose "Either", use `either` pieces only. If it isn't clear, ask in the same one-line message as any other missing detail; on a gift board (no questionnaire), use `either` pieces instead of asking. A client who rules out bows gets no headband.
 
 **Teens can wear adult pieces:** catalog pieces with `also_for: ["teen boys"]` or `["teen girls"]` (men's jeans, sneakers, loafers, coats; women's sweaters and boots) belong on a teen's shortlist too. Don't call it a library gap when an adult piece fits.
 
