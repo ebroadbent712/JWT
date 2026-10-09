@@ -1,5 +1,5 @@
 {
- "library_version": "1.4.0",
+ "library_version": "1.4.1",
  "color_stories": {
   "cabernet-navy": {
    "name": "Cabernet and Navy",
@@ -5125,6 +5125,56 @@
     "everyday": "https://www2.hm.com/en_us/productpage.1268034001.html"
    },
    "baby_for": "boy"
+  },
+  {
+   "id": "BB-ACC-002",
+   "file": "bb_acc_002.jpg",
+   "name": "Ivory bow headband",
+   "person": "babies",
+   "category": "accessory",
+   "layout_role": "accent",
+   "hex": "#EFE7D6",
+   "pattern": false,
+   "colors": [
+    "ivory"
+   ],
+   "color_stories": [
+    "cabernet-navy",
+    "harvest",
+    "evergreen",
+    "rose-olive"
+   ],
+   "link_tier": "2 links",
+   "description": "Baby girl's soft stretchy nylon headband with a medium cotton bow in warm ivory, approximately #EFE7D6. Bow tails slightly flared, headband laid in a gentle loop. No logos.",
+   "shop_links": {
+    "mid": "https://www.janieandjack.com/item/kids-baby-bow-soft-headband-200588148.html?lang=en_US",
+    "splurge": "https://www.nordstrom.com/s/baby-bling-headbands-2-pack/3745937"
+   },
+   "baby_for": "girl"
+  },
+  {
+   "id": "BB-ACC-003",
+   "file": "bb_acc_003.jpg",
+   "name": "Blush bow headband",
+   "person": "babies",
+   "category": "accessory",
+   "layout_role": "accent",
+   "hex": "#E0AEBA",
+   "pattern": false,
+   "colors": [
+    "blush"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "cabernet-navy"
+   ],
+   "link_tier": "2 links",
+   "description": "Baby girl's soft stretchy nylon headband with a medium cotton bow in blush pink, approximately #E0AEBA. Headband laid in a gentle loop. No logos.",
+   "shop_links": {
+    "mid": "https://www.gap.com/browse/product.do?pid=883681002",
+    "splurge": "https://www.nordstrom.com/s/baby-bling-3-pack-baby-fab-skinny-bow-headbands-baby/7521829"
+   },
+   "baby_for": "girl"
   }
  ]
 }
