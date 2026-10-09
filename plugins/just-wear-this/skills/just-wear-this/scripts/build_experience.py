@@ -62,6 +62,38 @@ def contact_lines(settings, e):
     return "\n    ".join(out)
 
 
+def recs_section(settings, plan, e):
+    """Optional 'before your session' favorites: the photographer's saved list, adjusted per plan.
+    plan["recommendations"] replaces the list for one session; plan["skip_recommendations"] drops names."""
+    recs = plan.get("recommendations", settings.get("recommendations") or [])
+    skip = {s.lower() for s in plan.get("skip_recommendations", [])}
+    recs = [r for r in recs if r.get("name") and r["name"].lower() not in skip]
+    if not recs:
+        return ""
+    studio = settings.get("studio_name") or "your photographer"
+    cards = []
+    for r in recs:
+        bits = [f'<span class="rkind">{e(r.get("kind", ""))}</span>' if r.get("kind") else "",
+                f'<span class="rname">{e(r["name"])}</span>',
+                f'<p class="rnote">{e(r["note"])}</p>' if r.get("note") else ""]
+        reach = []
+        for key, lab in (("link", "Web"), ("instagram", "Instagram"), ("phone", "Phone")):
+            v = r.get(key)
+            if not v:
+                continue
+            if key == "link" and str(v).startswith("http"):
+                shown = re.sub(r"^https?://(www\.)?", "", v).rstrip("/")
+                reach.append(f'<a class="rreach" href="{e(v)}" target="_blank" rel="noopener"><small>{lab}</small> {e(shown)}</a>')
+            else:
+                reach.append(f'<span class="rreach"><small>{lab}</small> {e(v)}</span>')
+        bits.append("".join(reach))
+        if r.get("perk"):
+            bits.append(f'<span class="rperk">{e(r["perk"])}</span>')
+        cards.append('<li class="rec">' + "".join(b for b in bits if b) + "</li>")
+    return (f'<section class="colors recs"><h2>Before your session</h2>'
+            f'<p class="story">A few favorites from {e(studio)}.</p><ul class="reclist">{"".join(cards)}</ul></section>')
+
+
 def build(plan_path, out_dir):
     plan = json.load(open(plan_path))
     catalog = json.load(open(os.path.join(LIB, "catalog.json")))
@@ -156,7 +188,7 @@ def build(plan_path, out_dir):
         "{{TITLE}}": e(f"{plan['family_name'].replace('The ', '')} Outfit Plan"),
         "{{FAMILY}}": e(plan["family_name"]), "{{LOCATION}}": e(plan.get("title_right", "")), "{{SUB}}": e(sub),
         "{{STUDIO}}": e(studio), "{{WEBSITE}}": e(website),
-        "{{CONTACT}}": contact_lines(settings, e), "{{ACCENT}}": anchor, "{{ACCENT_INK}}": readable_on(anchor),
+        "{{CONTACT}}": contact_lines(settings, e), "{{RECS}}": recs_section(settings, plan, e), "{{ACCENT}}": anchor, "{{ACCENT_INK}}": readable_on(anchor),
         "{{LINEUP}}": lineup_uri, "{{NAMES}}": names, "{{SWATCHES}}": swatches, "{{HEADLINE}}": headline,
         "{{STORY}}": e(plan.get("story", "")), "{{WHY}}": e(plan.get("why_it_works", "")), "{{TABS}}": tabs,
         "{{DATA}}": json.dumps(data), "{{IMGS}}": imgs_js, "{{TOTAL}}": str(len(pieces)),
@@ -244,6 +276,16 @@ h2{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
 .foot{display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding-top:20px}
 .foot .sign{font-family:var(--hand);font-size:28px}
 .foot small{color:var(--soft)}
+.reclist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+@media (min-width:620px){.reclist{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rec{display:flex;flex-direction:column;gap:6px;padding:16px;border:1px solid var(--line);border-radius:14px;min-width:0}
+.rkind{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.rname{font-size:18px;font-weight:700;letter-spacing:-.01em}
+.rnote{margin:0;font-family:var(--hand);font-size:22px;line-height:1.15}
+.rreach{display:flex;gap:8px;align-items:baseline;font-size:14px;text-decoration:none;overflow-wrap:anywhere}
+.rreach small{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);min-width:70px}
+a.rreach{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.rperk{align-self:flex-start;margin-top:4px;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--have-bg);color:var(--have)}
 .ask{margin:4px 0 8px;max-width:52ch}
 .who{font-weight:600}
 .contact{display:flex;gap:8px;align-items:baseline}
@@ -317,6 +359,7 @@ h2{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
     <ul class="list" id="prep"></ul>
   </section>
 
+  {{RECS}}
   <footer class="foot">
     <span class="sign">Can't wait to see you!</span>
     <p class="ask">Questions about a piece, a size that isn't working, or something you'd like to swap? Reach out to {{STUDIO}} anytime. We'll figure it out together before your session.</p>
