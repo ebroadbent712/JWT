@@ -1,5 +1,5 @@
 {
- "library_version": "1.0.4",
+ "library_version": "1.0.5",
  "color_stories": {
   "cabernet-navy": {
    "name": "Cabernet and Navy",
@@ -360,33 +360,6 @@
     "splurge": "https://www.nordstrom.com/s/ecco-st-1-hybrid-plain-toe-derby-men/5111674"
    },
    "link_tier": "3 links"
-  },
-  {
-   "id": "G-BTM-001",
-   "file": "girls_navy_floral_ruffle_skirt.jpg",
-   "name": "Navy floral tiered skirt",
-   "person": "girls",
-   "category": "bottom",
-   "layout_role": "bottom",
-   "colors": [
-    "navy",
-    "blush",
-    "lavender"
-   ],
-   "hex": "#232C4A",
-   "texture": "light cotton",
-   "pattern": true,
-   "pattern_scale": "ditsy floral",
-   "pattern_family": "navy-ditsy-floral",
-   "formality": "dressy casual",
-   "season": [
-    "all"
-   ],
-   "color_stories": [
-    "cabernet-navy"
-   ],
-   "shop_links": {},
-   "link_tier": "0 links"
   },
   {
    "id": "G-DRS-001",
@@ -1621,22 +1594,6 @@
     "mid": "https://factory.jcrew.com/p/boys/categories/clothing/sweatshirts-and-sweaters/sweaters/boys-cotton-crewneck-sweater/BB414",
     "splurge": "https://www.littleenglish.com/products/quarter-zip-sweater-gray"
    }
-  },
-  {
-   "id": "BB-DRS-003",
-   "file": "bb_drs_003.jpg",
-   "name": "Camel knit romper",
-   "person": "babies",
-   "category": "dress",
-   "layout_role": "hero",
-   "hex": "#C9A57A",
-   "pattern": false,
-   "color_stories": [
-    "harvest"
-   ],
-   "link_tier": "0 links",
-   "description": "Baby knit romper in warm camel, approximately #C9A57A. Soft cable knit, long sleeves, footless, small wooden buttons at the shoulder. No logos.",
-   "shop_links": {}
   },
   {
    "id": "G-BTM-003",
@@ -4083,25 +4040,6 @@
    }
   },
   {
-   "id": "W-DRS-018",
-   "file": "w_drs_018.jpg",
-   "name": "Mustard ribbed knit midi dress",
-   "person": "women",
-   "category": "dress",
-   "layout_role": "hero",
-   "hex": "#C9962E",
-   "pattern": false,
-   "color_stories": [
-    "harvest"
-   ],
-   "link_tier": "0 links",
-   "description": "Women's long-sleeved ribbed knit midi dress in warm mustard gold, approximately #C9962E. Soft medium-weight rib knit, relaxed straight shape, crew or soft V neckline, falls mid-calf. No logos.",
-   "shop_links": {},
-   "also_for": [
-    "teen girls"
-   ]
-  },
-  {
    "id": "W-DRS-019",
    "file": "w_drs_019.jpg",
    "name": "Olive ribbed knit midi dress",
@@ -4306,27 +4244,6 @@
    },
    "also_for": [
     "teen boys"
-   ]
-  },
-  {
-   "id": "B-OUT-008",
-   "file": "b_out_008.jpg",
-   "name": "Camel quilted shirt jacket",
-   "person": "boys",
-   "category": "outerwear",
-   "layout_role": "layer",
-   "hex": "#C19A6B",
-   "pattern": false,
-   "color_stories": [
-    "cabernet-navy",
-    "harvest",
-    "evergreen"
-   ],
-   "link_tier": "0 links",
-   "description": "Boys' quilted shirt jacket in soft camel, approximately #C19A6B. Diamond-quilted cotton, point collar, snap front, two chest pockets. No logos.",
-   "shop_links": {},
-   "never_with": [
-    "M-OUT-009"
    ]
   },
   {
