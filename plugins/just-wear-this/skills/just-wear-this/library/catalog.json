@@ -1,5 +1,5 @@
 {
- "library_version": "1.0.5",
+ "library_version": "1.0.6",
  "color_stories": {
   "cabernet-navy": {
    "name": "Cabernet and Navy",
@@ -178,6 +178,54 @@
     }
    ],
    "summary": "Deep forest green with cream, camel and a touch of burgundy. Classic winter without the cliché."
+  },
+  "rose-olive": {
+   "name": "Rose and Olive",
+   "season": [
+    "spring",
+    "fall"
+   ],
+   "settings": [
+    "garden",
+    "blossom trees",
+    "wildflower field",
+    "golden hour field",
+    "greenhouse"
+   ],
+   "stocked": false,
+   "palette": [
+    {
+     "name": "Berry rose",
+     "hex": "#9D3A56"
+    },
+    {
+     "name": "Dusty rose",
+     "hex": "#B06F6B"
+    },
+    {
+     "name": "Spring olive",
+     "hex": "#786825"
+    },
+    {
+     "name": "Greige",
+     "hex": "#DFD8C6"
+    },
+    {
+     "name": "Plum",
+     "hex": "#48011F"
+    }
+   ],
+   "accents": [
+    {
+     "name": "Blush",
+     "hex": "#E0AEBA"
+    },
+    {
+     "name": "Terracotta",
+     "hex": "#C3634D"
+    }
+   ],
+   "summary": "Berry and dusty rose with fresh olive and soft greige, a touch of plum for depth and blush for the little ones. Romantic in spring, rich in fall."
   }
  },
  "smart_links": {
@@ -736,7 +784,8 @@
    "shop_links": {
     "everyday": "https://www2.hm.com/en_us/productpage.1238670004.html",
     "mid": "https://www.hannaandersson.com/accessories-baby-hats/46906-76X.html"
-   }
+   },
+   "baby_for": "either"
   },
   {
    "id": "M-TOP-007",
@@ -899,7 +948,8 @@
     "everyday": "https://oldnavy.gap.com/browse/product.do?pid=903876012",
     "mid": "https://www.janieandjack.com/item/baby-boy-cable-knit-one-piece-100022283.html?lang=en_US",
     "splurge": "https://www.nordstrom.com/s/feltman-brothers-sleeveless-knit-romper-baby/5883338"
-   }
+   },
+   "baby_for": "either"
   },
   {
    "id": "G-ACC-002",
@@ -1329,7 +1379,8 @@
    },
    "never_with": [
     "B-OUT-001"
-   ]
+   ],
+   "baby_for": "boy"
   },
   {
    "id": "M-TOP-004",
@@ -1398,7 +1449,8 @@
     "navy",
     "blush",
     "lavender"
-   ]
+   ],
+   "baby_for": "girl"
   },
   {
    "id": "TB-TOP-001",
@@ -3495,7 +3547,8 @@
    "never_with": [
     "T-DRS-005",
     "G-DRS-009"
-   ]
+   ],
+   "baby_for": "girl"
   },
   {
    "id": "M-BTM-003",
@@ -4037,7 +4090,8 @@
    "description": "Baby long-sleeved cable-knit one-piece in deep forest green, approximately #2F4A3A. Soft cotton knit, chunky cables down the front, snaps underneath. No logos.",
    "shop_links": {
     "mid": "https://www.gap.com/browse/product.do?pid=1185439002"
-   }
+   },
+   "baby_for": "boy"
   },
   {
    "id": "W-DRS-019",
@@ -4447,7 +4501,8 @@
    "shop_links": {
     "mid": "https://www.gap.com/browse/product.do?pid=1185430022",
     "splurge": "https://www.nordstrom.com/s/cable-knit-cotton-cardigan-pants-set-baby/9004974"
-   }
+   },
+   "baby_for": "boy"
   },
   {
    "id": "BB-DRS-009",
@@ -4470,7 +4525,8 @@
    },
    "statement": true,
    "pattern_scale": "small fair isle",
-   "pattern_family": "oatmeal-fair-isle"
+   "pattern_family": "oatmeal-fair-isle",
+   "baby_for": "either"
   },
   {
    "id": "BB-SHO-001",
@@ -4490,7 +4546,8 @@
    "description": "Pair of baby knit booties in deep navy, approximately #1F2840. Soft knit with ribbed cuff. No logos.",
    "shop_links": {
     "mid": "https://www.gap.com/browse/product.do?pid=215599072"
-   }
+   },
+   "baby_for": "either"
   }
  ]
 }

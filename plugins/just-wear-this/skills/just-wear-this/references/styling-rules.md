@@ -57,9 +57,12 @@ Palettes live in `library/catalog.json`. Choosing a story:
 | Girls (4–12) | Movement and twirl | Smocked or tiered dresses, sweaters with skirts, tights, ankle booties, small bows | Sequins, character prints, scratchy fabric |
 | Boys (4–12) | Soft structure, room to move | Button-downs or sweaters, cords or chinos, sneakers or boots | Clip-on ties, stiff collars, character prints |
 | Toddlers (1–3) | Comfort above all | Rompers, soft knits, overalls, soft-soled shoes or barefoot | Buttons at the back of the neck, hard shoes, hats |
-| Babies | Soft texture, easy diaper access | Knit rompers, bonnets, simple onesies in a story neutral | Busy prints, pinching headbands, stiff collars |
+| Baby girls | Soft texture, easy diaper access, sweet | Soft dresses (with bloomers), smocked or floral dresses, cardigans, bonnets | Busy prints, pinching headbands, stiff collars, a boy's set |
+| Baby boys | Soft texture, easy diaper access | Soft knit or waffle sets (sweater and pants), cable knits, booties | Dresses or bubble rompers, frills, stiff collars |
 | Grandparents, extended family | Part of the family, not styled like the kids | Solid knits, button-downs, blouses, cardigans in quieter story colors | Being the anchor (unless they want it); keep prints minimal |
 | Couples only | Both can carry color; still one anchor | One deeper or patterned piece, one supporting solid | Matching outfits, two prints |
+
+**Baby girl or boy:** the questionnaire or the photographer says which. Baby pieces carry `baby_for` (`girl`, `boy` or `either`); only use matching or `either` pieces. If it isn't clear, ask in the same one-line message as any other missing detail.
 
 **Teens can wear adult pieces:** catalog pieces with `also_for: ["teen boys"]` or `["teen girls"]` (men's jeans, sneakers, loafers, coats; women's sweaters and boots) belong on a teen's shortlist too. Don't call it a library gap when an adult piece fits.
 
