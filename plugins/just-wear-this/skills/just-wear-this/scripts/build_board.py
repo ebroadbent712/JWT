@@ -338,13 +338,18 @@ def tonal_clashes(plan, items_by_id, limit=16):
     return out
 
 
+def _same_name(a, b):
+    a, b = a.lower(), b.lower()
+    return a == b or (" " not in a and b.endswith(" " + a)) or (" " not in b and a.endswith(" " + b))
+
+
 def board_palette(plan, items_by_id, catalog, limit=12):
     """The swatches at the bottom must be colors people are actually wearing.
     This story's swatches come first (only the ones someone wears), then worn colors from the other
     stocked stories; near-duplicates are skipped. 3 to 5 swatches."""
     stories = catalog["color_stories"]
     story = stories.get(plan.get("color_story"), {})
-    own = list(story.get("palette", []))
+    own = list(story.get("palette", [])) + list(story.get("accents", []))
     others = [sw for k, st in stories.items() if st is not story and st.get("stocked", True) for sw in st.get("palette", [])]
     others += [{"name": "Stone", "hex": "#BFB09A"}, {"name": "Charcoal", "hex": "#3E4044"}, {"name": "Oatmeal", "hex": "#D9CDB8"},
                {"name": "Denim", "hex": "#2B3A5C"}, {"name": "Olive", "hex": "#5B5A3A"}, {"name": "Mustard", "hex": "#C9962E"}]
@@ -365,7 +370,7 @@ def board_palette(plan, items_by_id, catalog, limit=12):
         for sc, sw in sorted(((score(sw), sw) for sw in group), key=lambda x: -x[0]):
             if sc <= 0 or len(pal) >= 5:
                 continue
-            if any(dist(_lab(sw["hex"]), _lab(q["hex"])) < 14 or sw["name"].lower() == q["name"].lower() for q in pal):
+            if any(dist(_lab(sw["hex"]), _lab(q["hex"])) < 14 or _same_name(sw["name"], q["name"]) for q in pal):
                 continue
             pal.append(sw)
     for sw in own:  # never fewer than three

@@ -1,5 +1,5 @@
 {
- "library_version": "1.3.0",
+ "library_version": "1.4.0",
  "color_stories": {
   "cabernet-navy": {
    "name": "Cabernet and Navy",
@@ -192,7 +192,7 @@
     "golden hour field",
     "greenhouse"
    ],
-   "stocked": false,
+   "stocked": true,
    "palette": [
     {
      "name": "Berry rose",
@@ -4518,6 +4518,613 @@
     "mid": "https://www.gap.com/browse/product.do?pid=215599072"
    },
    "baby_for": "either"
+  },
+  {
+   "id": "W-DRS-021",
+   "file": "w_drs_021.jpg",
+   "name": "Berry rose smocked puff-sleeve midi dress",
+   "person": "women",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#9D3A56",
+   "pattern": false,
+   "colors": [
+    "berry rose"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Women's midi dress in deep berry rose, approximately #9D3A56. Soft cotton gauze, square neckline, smocked fitted bodice with a small tie at the bust, short voluminous puff sleeves with elastic cuffs, full flowy skirt to mid-calf. Solid color. No logos.",
+   "shop_links": {
+    "mid": "https://www.quince.com/women/100-organic-cotton-gauze-smocked-square-neck-midi-dress?color=wild-cherry"
+   },
+   "statement": true
+  },
+  {
+   "id": "W-DRS-022",
+   "file": "w_drs_022.jpg",
+   "name": "Dusty rose tiered maxi dress",
+   "person": "women",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#B06F6B",
+   "pattern": false,
+   "colors": [
+    "dusty rose"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Women's floor-length maxi dress in dusty rose, approximately #B06F6B. Lightweight chiffon, V-neckline, long sheer balloon sleeves with elastic cuffs, fitted waist, pleated tiered A-line skirt. Solid color. No logos.",
+   "shop_links": {
+    "mid": "https://www.lulus.com/products/graceful-finesse-dusty-rose-pleated-long-sleeve-maxi-dress/2255136.html"
+   },
+   "statement": true
+  },
+  {
+   "id": "W-OUT-012",
+   "file": "w_out_012.jpg",
+   "name": "Dusty mauve fine-knit cardigan",
+   "person": "women",
+   "category": "outerwear",
+   "layout_role": "layer",
+   "hex": "#A0687A",
+   "pattern": false,
+   "colors": [
+    "mauve"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "cabernet-navy"
+   ],
+   "link_tier": "1 link",
+   "description": "Women's fitted fine-gauge knit cardigan in dusty mauve, approximately #A0687A. Ribbed round neckline, button front, long sleeves, ribbed cuffs and hem, hip length. No logos.",
+   "shop_links": {
+    "everyday": "https://www2.hm.com/en_us/productpage.1289684011.html"
+   },
+   "also_for": [
+    "teen girls"
+   ]
+  },
+  {
+   "id": "W-BTM-007",
+   "file": "w_btm_007.jpg",
+   "name": "Olive satin midi skirt",
+   "person": "women",
+   "category": "bottom",
+   "layout_role": "bottom",
+   "hex": "#786825",
+   "pattern": false,
+   "colors": [
+    "olive"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Women's bias-cut satin slip skirt in muted olive green, approximately #786825. Slim elastic waistband, fluid draped skirt to mid-calf, soft sheen, no slits or trims. No logos.",
+   "shop_links": {
+    "mid": "https://www.quince.com/women/silk/silk-skirt"
+   },
+   "also_for": [
+    "teen girls"
+   ]
+  },
+  {
+   "id": "M-TOP-016",
+   "file": "m_top_016.jpg",
+   "name": "Light rose oxford button-down",
+   "person": "men",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#E6C3C3",
+   "pattern": false,
+   "colors": [
+    "blush"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Men's oxford cloth button-down shirt in pale rose pink, approximately #E6C3C3. Button-down collar, long sleeves with button cuffs, chest pocket, curved shirttail hem. No logos.",
+   "shop_links": {
+    "everyday": "https://www.target.com/p/men-39-s-every-wear-long-sleeve-oxford-button-down-shirt-goodfellow-38-co-8482-light-pink-xl/-/A-95209555"
+   },
+   "also_for": [
+    "teen boys"
+   ]
+  },
+  {
+   "id": "M-BTM-005",
+   "file": "m_btm_005.jpg",
+   "name": "Olive chinos",
+   "person": "men",
+   "category": "bottom",
+   "layout_role": "bottom",
+   "hex": "#6B6436",
+   "pattern": false,
+   "colors": [
+    "olive"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "harvest"
+   ],
+   "link_tier": "3 links",
+   "description": "Men's slim stretch twill chinos in muted olive green, approximately #6B6436. Flat front, slant pockets, belt loops, narrow tapered leg, full length. No logos.",
+   "shop_links": {
+    "everyday": "https://www.target.com/p/men-39-s-comfort-wear-slim-fit-chino-pants-goodfellow-38-co-8482-olive-green-38x30/-/A-93579865",
+    "mid": "https://www.quince.com/men/ultra-stretch-24/7-smart-pant---slim-fit?color=bayberry-olive",
+    "splurge": "https://www.jcrew.com/p/03226?color_name=mediterranean-olive"
+   },
+   "also_for": [
+    "teen boys"
+   ]
+  },
+  {
+   "id": "M-TOP-017",
+   "file": "m_top_017.jpg",
+   "name": "Greige quarter-zip sweater",
+   "person": "men",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#CFC6B4",
+   "pattern": false,
+   "colors": [
+    "greige"
+   ],
+   "color_stories": [
+    "cabernet-navy",
+    "harvest",
+    "evergreen",
+    "rose-olive"
+   ],
+   "link_tier": "2 links",
+   "description": "Men's fine-gauge cashmere quarter-zip pullover in light greige oatmeal, approximately #CFC6B4. Stand-up mock collar with a short metal zip, long sleeves, ribbed cuffs and hem, hip length. No logos.",
+   "shop_links": {
+    "mid": "https://www.quince.com/men/cashmere/cashmere-quarter-zip-sweater",
+    "splurge": "https://www.jcrew.com/p/mens/categories/clothing/sweaters/pullover/midweight-cashmere-quarter-zip-sweater/CM307"
+   },
+   "also_for": [
+    "teen boys"
+   ]
+  },
+  {
+   "id": "M-OUT-013",
+   "file": "m_out_013.jpg",
+   "name": "Taupe canvas chore jacket",
+   "person": "men",
+   "category": "outerwear",
+   "layout_role": "layer",
+   "hex": "#A08E78",
+   "pattern": false,
+   "colors": [
+    "taupe"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "harvest"
+   ],
+   "link_tier": "2 links",
+   "description": "Men's cotton canvas chore jacket in taupe khaki, approximately #A08E78. Point collar, button front, long sleeves with button cuffs, three patch pockets (one chest, two hip), straight hip-length hem. No logos.",
+   "shop_links": {
+    "everyday": "https://www.kohls.com/product/prd-7708508/mens-lands-end-canvas-chore-jacket.jsp",
+    "mid": "https://factory.jcrew.com/p/mens/categories/clothing/jackets-and-vests/jackets/canvas-chore-jacket/CL297"
+   },
+   "also_for": [
+    "teen boys"
+   ]
+  },
+  {
+   "id": "TG-DRS-004",
+   "file": "tg_drs_004.jpg",
+   "name": "Mauve satin slip midi dress",
+   "person": "teen girls",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#9D5A6E",
+   "pattern": false,
+   "colors": [
+    "mauve"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "2 links",
+   "description": "Teen girl's satin slip dress in mauve, approximately #9D5A6E. V-neckline edged in delicate lace, thin straps, fluid skirt to mid-calf. Solid. No logos.",
+   "shop_links": {
+    "everyday": "https://www2.hm.com/en_gb/productpage.1289615001.html",
+    "mid": "https://www.lulus.com/products/calla-love-mauve-pink-jacquard-satin-slip-dress/1005002.html"
+   },
+   "statement": true
+  },
+  {
+   "id": "TG-OUT-005",
+   "file": "tg_out_005.jpg",
+   "name": "Blush cropped cardigan",
+   "person": "teen girls",
+   "category": "outerwear",
+   "layout_role": "layer",
+   "hex": "#E0AEBA",
+   "pattern": false,
+   "colors": [
+    "blush"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "cabernet-navy"
+   ],
+   "link_tier": "2 links",
+   "description": "Teen girl's light-gauge cotton cardigan in soft blush, approximately #E0AEBA. Button front with small horn buttons, long sleeves with ribbed cuffs, boxy slightly cropped length. No logos.",
+   "shop_links": {
+    "everyday": "https://www2.hm.com/en_us/productpage.1311996006.html",
+    "mid": "https://www.quince.com/women/100-organic-cotton-button-front-cardigan?color=shell-pink"
+   }
+  },
+  {
+   "id": "TG-DRS-005",
+   "file": "tg_drs_005.jpg",
+   "name": "Olive ribbed knit midi dress",
+   "person": "women",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#786825",
+   "pattern": false,
+   "colors": [
+    "olive"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "harvest",
+    "evergreen"
+   ],
+   "link_tier": "1 link",
+   "description": "Fitted rib-knit midi dress in olive green, approximately #786825. Crew neckline, long slim sleeves, straight mid-calf hem. Solid. No logos.",
+   "shop_links": {
+    "mid": "https://www.quince.com/women/cotton-cashmere-ribbed-long-sleeve-midi-dress?color=olive"
+   },
+   "also_for": [
+    "teen girls"
+   ]
+  },
+  {
+   "id": "TB-OUT-003",
+   "file": "tb_out_003.jpg",
+   "name": "Olive twill overshirt",
+   "person": "men",
+   "category": "outerwear",
+   "layout_role": "layer",
+   "hex": "#6F6A3A",
+   "pattern": false,
+   "colors": [
+    "olive"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "harvest"
+   ],
+   "link_tier": "2 links",
+   "description": "Heavyweight garment-dyed cotton twill overshirt in muted olive green, approximately #6F6A3A. Point collar, button front, two buttoned flap chest pockets, long sleeves with button cuffs, straight hip-length hem. No logos.",
+   "shop_links": {
+    "everyday": "https://www2.hm.com/en_ca/productpage.1321537001.html",
+    "splurge": "https://www.jcrew.com/p/CI472?color_name=balsam-olive"
+   },
+   "also_for": [
+    "teen boys"
+   ]
+  },
+  {
+   "id": "TB-TOP-005",
+   "file": "tb_top_005.jpg",
+   "name": "Plum ribbed quarter-zip sweater",
+   "person": "men",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#5A1E33",
+   "pattern": false,
+   "colors": [
+    "plum"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "cabernet-navy"
+   ],
+   "link_tier": "1 link",
+   "description": "Ribbed cotton quarter-zip sweater in deep plum burgundy, approximately #5A1E33. Stand-up mock collar with a metal zip, long sleeves, ribbed cuffs and hem, vertical rib texture, hip length. No logos.",
+   "shop_links": {
+    "everyday": "https://www.target.com/p/lands-end-men-s-bedford-rib-quarter-zip-sweater-large-burgundy-spritz/-/A-1005649576"
+   },
+   "also_for": [
+    "teen boys"
+   ]
+  },
+  {
+   "id": "G-DRS-010",
+   "file": "g_drs_010.jpg",
+   "name": "Blush tulle party dress",
+   "person": "girls",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#E0AEBA",
+   "pattern": false,
+   "colors": [
+    "blush"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "2 links",
+   "description": "Girls' party dress in light blush pink, approximately #E0AEBA. Fitted short-sleeve bodice with a subtle sparkle, gathered waist, full layered tulle skirt to just above the knee. No logos.",
+   "shop_links": {
+    "everyday": "https://www.target.com/p/girls-39-short-sleeve-tulle-sequin-dress-cat-38-jack-8482-light-pink-m/-/A-91251813",
+    "mid": "https://us.boden.com/products/girls-velour-tulle-ballet-dress-rose-pink-g5577pnk"
+   },
+   "statement": true
+  },
+  {
+   "id": "G-DRS-011",
+   "file": "g_drs_011.jpg",
+   "name": "Crushed rose floral dress on cream",
+   "person": "girls",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#8B263E",
+   "pattern": true,
+   "colors": [
+    "cream",
+    "crushed rose",
+    "green"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Girls' cotton dress on a cream ground scattered with crushed-rose and berry flowers (approximately #8B263E) and small green leaves. Round neck with ruffle trim, long sleeves, shirred bodice, full gathered skirt to just above the knee. No logos.",
+   "shop_links": {
+    "mid": "https://www.janieandjack.com/item/girls-the-winter-floral-dress-105375002.html?lang=en_US"
+   },
+   "pattern_scale": "small floral",
+   "pattern_family": "rose-floral-cream"
+  },
+  {
+   "id": "G-DRS-012",
+   "file": "g_drs_012.jpg",
+   "name": "Rose and ivory stripe dress",
+   "person": "girls",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#C98E8E",
+   "pattern": true,
+   "colors": [
+    "rose",
+    "ivory"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "cabernet-navy"
+   ],
+   "link_tier": "2 links",
+   "description": "Girls' soft cotton jersey dress in even rose-pink and ivory horizontal stripes (rose approximately #C98E8E). Rounded collar with a lace edge, fitted bodice, gently flared knee-length skirt. No logos.",
+   "shop_links": {
+    "mid": "https://us.boden.com/products/girls-bow-back-jersey-dress-pink-stripe-g5947pnt",
+    "splurge": "https://www.rachelriley.com/products/pink-breton-stripe-jersey-dress"
+   },
+   "pattern_scale": "medium stripe",
+   "pattern_family": "rose-ivory-stripe"
+  },
+  {
+   "id": "G-OUT-004",
+   "file": "g_out_004.jpg",
+   "name": "Dusty rose fluffy cardigan",
+   "person": "girls",
+   "category": "outerwear",
+   "layout_role": "layer",
+   "hex": "#C98E8E",
+   "pattern": false,
+   "colors": [
+    "dusty rose"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Girls' soft fluffy-knit cardigan in dusty rose, approximately #C98E8E. Round neckline, button front, long sleeves with ribbed cuffs, ribbed hip-length hem. No logos.",
+   "shop_links": {
+    "everyday": "https://www2.hm.com/en_us/productpage.1247530003.html"
+   }
+  },
+  {
+   "id": "B-BTM-005",
+   "file": "b_btm_005.jpg",
+   "name": "Olive chinos",
+   "person": "boys",
+   "category": "bottom",
+   "layout_role": "bottom",
+   "hex": "#6B6436",
+   "pattern": false,
+   "colors": [
+    "olive"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "harvest"
+   ],
+   "link_tier": "2 links",
+   "description": "Boys' cotton stretch twill chinos in olive green, approximately #6B6436. Flat front, belt loops, slash pockets, slim straight leg to the ankle. No logos.",
+   "shop_links": {
+    "everyday": "https://www.landsend.com/products/boys-elastic-waist-pull-on-chino-pants/id_365233",
+    "splurge": "https://www.jcrew.com/p/boys/categories/clothing/bottoms/chino/boys-770trade-straight-fit-stretch-chino-pant/AZ588"
+   }
+  },
+  {
+   "id": "B-TOP-008",
+   "file": "b_top_008.jpg",
+   "name": "Light rose oxford button-down",
+   "person": "boys",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#E6C3C3",
+   "pattern": false,
+   "colors": [
+    "blush"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "2 links",
+   "description": "Boys' oxford cloth shirt in pale rose pink, approximately #E6C3C3. Button-down collar, long sleeves with button cuffs, chest pocket, curved hem. No logos.",
+   "shop_links": {
+    "everyday": "https://www.landsend.com/products/school-uniform-boys-long-sleeve-solid-oxford-dress-shirt/id_364676",
+    "mid": "https://www.janieandjack.com/item/boys-the-oxford-shirt-102776001.html?lang=en_US"
+   }
+  },
+  {
+   "id": "T-DRS-008",
+   "file": "t_drs_008.jpg",
+   "name": "Blush knit sweater dress",
+   "person": "toddlers",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#E0AEBA",
+   "pattern": false,
+   "colors": [
+    "blush"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "2 links",
+   "description": "Toddler girl's soft knit sweater dress in blush pink, approximately #E0AEBA. Crew neckline, long sleeves with ribbed cuffs, fitted bodice easing into a slightly flared skirt above the knee, ribbed hem. No logos.",
+   "shop_links": {
+    "everyday": "https://www.target.com/p/toddler-girls-39-sweater-dress-cat-38-jack-8482-rose-pink-2t/-/A-94338185",
+    "mid": "https://www.janieandjack.com/item/girls-cable-knit-sweater-dress-105956002.html?lang=en_US"
+   },
+   "toddler_for": "girl"
+  },
+  {
+   "id": "T-BTM-004",
+   "file": "t_btm_004.jpg",
+   "name": "Dark wash pull-on jeans",
+   "person": "toddlers",
+   "category": "bottom",
+   "layout_role": "bottom",
+   "hex": "#2E3A55",
+   "pattern": false,
+   "colors": [
+    "denim"
+   ],
+   "color_stories": [
+    "cabernet-navy",
+    "harvest",
+    "evergreen",
+    "rose-olive"
+   ],
+   "link_tier": "2 links",
+   "description": "Toddler slim pull-on jeans in medium-dark indigo denim, approximately #2E3A55. Elastic waistband, faux fly stitching, five-pocket style, light whiskering, slim straight leg. No logos.",
+   "shop_links": {
+    "everyday": "https://oldnavy.gap.com/browse/product.do?pid=525608",
+    "mid": "https://www.hannaandersson.com/boys-clothing-pants/80824-BX0.html"
+   }
+  },
+  {
+   "id": "T-TOP-004",
+   "file": "t_top_004.jpg",
+   "name": "Greige cashmere crewneck",
+   "person": "toddlers",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#CFC6B4",
+   "pattern": false,
+   "colors": [
+    "greige"
+   ],
+   "color_stories": [
+    "cabernet-navy",
+    "harvest",
+    "evergreen",
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Toddler fine-gauge crewneck sweater in soft greige oatmeal, approximately #CFC6B4. Ribbed crew neckline, long sleeves, ribbed cuffs and hem. Solid. No logos.",
+   "shop_links": {
+    "mid": "https://www.quince.com/baby-&-kids/apparel/mongolian-cashmere-crewneck-sweater-toddler-gender-neutral"
+   }
+  },
+  {
+   "id": "BB-DRS-010",
+   "file": "bb_drs_010.jpg",
+   "name": "Blush smocked dress with bloomers",
+   "person": "babies",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#E0AEBA",
+   "pattern": false,
+   "colors": [
+    "blush"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Baby girl's cotton swiss-dot dress in blush pink, approximately #E0AEBA. Hand smocking across the bodice, frilled neckline, short puff sleeves, full gathered skirt, with matching ruffle-edged bloomers laid beside it. No logos.",
+   "shop_links": {
+    "splurge": "https://www.rachelriley.com/products/swiss-dot-smocked-dress-bloomers"
+   },
+   "statement": true,
+   "baby_for": "girl"
+  },
+  {
+   "id": "BB-DRS-011",
+   "file": "bb_drs_011.jpg",
+   "name": "Rose floral baby dress",
+   "person": "babies",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#B06F6B",
+   "pattern": true,
+   "colors": [
+    "cream",
+    "dusty rose",
+    "green"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Baby girl's cream cotton sateen dress printed with dusty-rose roses (approximately #B06F6B) and green leaves. Round neck, short puff sleeves, fitted bodice, full gathered skirt, with matching bloomers. No logos.",
+   "shop_links": {
+    "mid": "https://www.janieandjack.com/item/baby-girl-the-rose-debut-baby-dress-101517001.html?lang=en_US"
+   },
+   "pattern_scale": "medium floral",
+   "pattern_family": "rose-floral-cream",
+   "baby_for": "girl"
+  },
+  {
+   "id": "BB-SET-002",
+   "file": "bb_set_002.jpg",
+   "name": "Greige waffle top and pants set",
+   "person": "babies",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#CFC6B4",
+   "pattern": false,
+   "colors": [
+    "greige"
+   ],
+   "color_stories": [
+    "cabernet-navy",
+    "harvest",
+    "evergreen",
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Baby boy's two-piece set in warm greige, approximately #CFC6B4: soft waffle-knit long-sleeve crewneck top with ribbed cuffs and matching pull-on joggers with ribbed ankles, shown together as one flat lay. No logos.",
+   "shop_links": {
+    "everyday": "https://www2.hm.com/en_us/productpage.1268034001.html"
+   },
+   "baby_for": "boy"
   }
  ]
 }
