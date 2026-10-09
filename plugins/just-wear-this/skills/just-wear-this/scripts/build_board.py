@@ -128,6 +128,17 @@ def choose_layout(items, area_w, area_h):
             # Real flat lays read top to bottom: the main piece sits above the bottoms.
             if "hero" in centers and "bottom" in centers and min(centers["hero"]) > min(centers["bottom"]) + 0.02:
                 score *= 0.55
+            # a jacket or blazer reads as part of the outfit, never shoe-sized; shoes never outshine the main piece
+            main_area = max((p[3] * p[4] for p in placed if p[0]["layout_role"] in ("hero", "bottom")), default=0)
+            for p in placed:
+                a = p[3] * p[4]
+                if p[0]["layout_role"] == "layer" and p[0]["category"] == "outerwear" and a < main_area * 0.45:
+                    score *= 0.75
+                if p[0]["layout_role"] == "shoes" and a > main_area * 0.55:
+                    score *= 0.75
+            shoe_area = max((p[3] * p[4] for p in placed if p[0]["layout_role"] == "shoes"), default=0)
+            if any(p[0]["layout_role"] == "bottom" and p[3] * p[4] < shoe_area * 1.6 for p in placed):
+                score *= 0.7  # pants or a skirt drawn no bigger than the shoes reads wrong
             # a dress is never drawn smaller than a layer beside it
             hero_area = max((p[3] * p[4] for p in placed if p[0]["layout_role"] == "hero" and p[0]["category"] == "dress"), default=0)
             other_area = max((p[3] * p[4] for p in placed if p[0]["layout_role"] != "hero"), default=0)
