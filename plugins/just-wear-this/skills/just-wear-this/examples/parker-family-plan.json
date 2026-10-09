@@ -1,0 +1,87 @@
+{
+  "family_name": "The Parker Family",
+  "title_right": "Kansas City, in the park",
+  "subtitle_right": "Late fall | Family photos",
+  "dress_level": "Dressy casual",
+  "color_story": "cabernet-navy",
+  "people": [
+    {
+      "label": "Mom",
+      "items": [
+        "W-DRS-003",
+        "W-SHO-001"
+      ],
+      "note": {
+        "text": "the anchor\ncolor",
+        "points_to": "W-DRS-003"
+      }
+    },
+    {
+      "label": "Dad",
+      "items": [
+        "M-OUT-001",
+        "M-TOP-001",
+        "M-BTM-001",
+        "M-SHO-001"
+      ],
+      "note": {
+        "text": "texture,\nnot pattern",
+        "points_to": "M-OUT-001"
+      }
+    },
+    {
+      "label": "Big sister",
+      "items": [
+        "G-TOP-002",
+        "G-BTM-001",
+        "G-SHO-001"
+      ],
+      "note": {
+        "text": "one soft\nprint",
+        "points_to": "G-BTM-001"
+      }
+    },
+    {
+      "label": "Brother",
+      "items": [
+        "B-TOP-001",
+        "B-BTM-001",
+        "B-ACC-001",
+        "K-SHO-001"
+      ],
+      "note": {
+        "text": "made for\nplaytime",
+        "points_to": "B-BTM-001"
+      }
+    },
+    {
+      "label": "Little sister",
+      "items": [
+        "G-DRS-001",
+        "G-SHO-001",
+        "G-ACC-001"
+      ],
+      "note": {
+        "text": "same print,\nher own look",
+        "points_to": "G-DRS-001"
+      }
+    }
+  ],
+  "headline": [
+    "One rich anchor.",
+    "Calm, classic blues.",
+    "Room to be themselves."
+  ],
+  "story": "Cabernet sets the tone, blue keeps it calm, and cream and camel warm it all up. The girls share one small floral, so the family reads as one without anyone matching.",
+  "why_it_works": "Mom's cabernet dress is the anchor: the deepest, richest color in the group, so the eye lands on her first and everything else supports it. Dad and the kids carry the blues, from his heathered sport coat to the navy cords, which keeps the photos calm and timeless against fall leaves. Ivory and camel soften the darker pieces and glow in golden-hour light. There is exactly one print, a tiny navy floral the sisters share in two different pieces, so it feels intentional without looking matched. Textures (rib knit, suede, corduroy, chunky wool) add depth the camera loves.",
+  "prep_checklist": [
+    "Try everything on together by the window a week ahead, so there is time to swap anything that doesn't fit.",
+    "Steam every piece the night before, especially the knits and the girls' ruffles.",
+    "Wipe down shoes and boots; suede brushes clean easily.",
+    "Pack a backup top for the kids and a lint roller for everyone.",
+    "Keep jewelry simple and skip anything with logos or large graphics."
+  ],
+  "owned": [
+    "M-SHO-001"
+  ]
+}

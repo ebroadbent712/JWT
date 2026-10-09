@@ -1,0 +1,18 @@
+{
+  "name": "just-wear-this",
+  "owner": {
+    "name": "Just Wear This",
+    "url": "https://justwearthis.co"
+  },
+  "metadata": {
+    "description": "The Just Wear This store for Claude"
+  },
+  "plugins": [
+    {
+      "name": "just-wear-this",
+      "source": "./plugins/just-wear-this",
+      "description": "Just Wear This: done-for-you family photo outfit plans. Paste a client questionnaire and get a coordinated, branded two-page outfit board PDF with shop links, built from a curated flat-lay library.",
+      "version": "1.0.0"
+    }
+  ]
+}
