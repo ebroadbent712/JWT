@@ -22,6 +22,7 @@ def build(settings, out_dir):
         "email": email,
         "sms": re.sub(r"[^\d+]", "", phone) if (phone and texting) else "",
         "phone": phone,
+        "send": settings.get("send_page", "https://justwearthis.co/send/"),
     }
     e = html.escape
     page = TEMPLATE
@@ -207,8 +208,8 @@ const STEPS = [
     const t = answersText();
     const room = A.room === ROOM_YES;
     const photos = A.own.trim() || room;
-    const subj = encodeURIComponent(`Outfit questions: ${familyLabel()}`);
-    const body = encodeURIComponent(t);
+    const tip = photos ? `Before you send, attach your photos${A.own.trim() ? " of the pieces you own" : ""}${room ? (A.own.trim() ? " and" : "") + " of the room" : ""}.` : "";
+    const go = m => CFG.send + "#" + packed({s: CFG.studio, e: CFG.email, p: CFG.sms, j: `Outfit questions: ${familyLabel()}`, b: t, t: tip, m});
     return `
     <div class="step">
       <span class="eyebrow">All done</span>
@@ -220,8 +221,8 @@ const STEPS = [
       </div>
       ${photos ? `<p class="tip">Before you send, attach your photos${A.own.trim() ? " of the pieces you own" : ""}${room ? (A.own.trim() ? " and" : "") + " of the room" : ""}.</p>` : ""}
       <div class="send">
-        ${CFG.sms ? `<a class="btn" href="sms:${esc(CFG.sms)}?&body=${body}" target="_blank" rel="noopener">Text my answers</a>` : ""}
-        ${CFG.email ? `<a class="btn ${CFG.sms ? "ghost" : ""}" style="flex:1" href="mailto:${esc(CFG.email)}?subject=${subj}&body=${body}" target="_blank" rel="noopener">Email my answers</a>` : ""}
+        ${CFG.sms ? `<a class="btn" href="${esc(go("sms"))}" target="_blank" rel="noopener">Text my answers</a>` : ""}
+        ${CFG.email ? `<a class="btn ${CFG.sms ? "ghost" : ""}" style="flex:1" href="${esc(go("email"))}" target="_blank" rel="noopener">Email my answers</a>` : ""}
         <button type="button" class="btn ghost" style="flex:1" id="copy">Copy my answers</button>
       </div>
       <p class="sub" id="copied" hidden>Copied! Paste it into a text or email to ${esc(CFG.studio)}${CFG.email ? ` (${esc(CFG.email)})` : ""}${CFG.phone ? ` or ${esc(CFG.phone)}` : ""}.</p>
@@ -232,6 +233,12 @@ const STEPS = [
   }, ok: () => ""},
 ];
 
+// Answers ride in the URL #fragment, which browsers never send to the server: they stay on the client's phone.
+function packed(o) {
+  const bytes = new TextEncoder().encode(JSON.stringify(o));
+  let bin = ""; bytes.forEach(b => bin += String.fromCharCode(b));
+  return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
 function familyLabel() {
   const f = A.family.trim();
   return f ? `The ${f} family` : `${A.who.trim()}'s family`;
