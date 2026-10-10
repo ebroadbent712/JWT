@@ -42,67 +42,74 @@ def build(settings, out_dir):
     return out
 
 
-TEMPLATE = r"""<title>{{TITLE}}</title>
+TEMPLATE = r"""<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* One question per screen, phone first. Same type and palette as the client outfit page. */
+/* Brand D, quiet (client-facing): white page, black for words only, Bodoni Moda headings, Jost labels and body.
+   One question per screen, phone first. Matches the client outfit page. */
 :root{
-  --paper:#ffffff; --card:#ffffff; --ink:#1d1d1d; --soft:#6b665e; --line:#e6e0d5; --wash:#f5f2ec;
-  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif; --hand:"Caveat","Bradley Hand","Segoe Print",cursive;
+  --paper:#ffffff; --ink:#121212; --soft:#6b6b6b; --line:#e2e2e2;
+  --sans:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif; --serif:"Bodoni Moda",Didot,Georgia,serif; --mark:"Anton",Impact,sans-serif;
 }
 *{box-sizing:border-box} [hidden]{display:none!important}
 html,body{margin:0}
 body{color-scheme:light;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
-.wrap{max-width:560px;margin:0 auto;padding:18px 18px 120px;min-height:100vh;display:flex;flex-direction:column;gap:28px}
-.top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.mark{font-weight:900;letter-spacing:-.01em;font-size:15px}
-.by{font-size:12px;color:var(--soft);letter-spacing:.06em;text-transform:uppercase}
-.bar{height:4px;background:var(--wash);border-radius:4px;overflow:hidden}
+.wrap{max-width:560px;margin:0 auto;padding:18px 22px 120px;min-height:100vh;display:flex;flex-direction:column;gap:28px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.mark{font-family:var(--mark);font-size:17px;text-transform:uppercase;letter-spacing:.01em}
+.by{font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:300}
+.bar{height:2px;background:var(--line);overflow:hidden;margin-top:-14px}
 .bar i{display:block;height:100%;width:0;background:var(--ink);transition:width .3s ease}
 .step{display:flex;flex-direction:column;gap:18px;animation:in .25s ease}
 @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.step{animation:none}.bar i{transition:none}}
-.eyebrow{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
-h1{font-size:clamp(32px,9vw,46px);line-height:1.04;font-weight:800;letter-spacing:-.03em;margin:0;text-wrap:balance}
-h2{font-size:clamp(24px,6.4vw,30px);line-height:1.15;font-weight:800;letter-spacing:-.02em;margin:0;text-wrap:balance}
-.hand{font-family:var(--hand);font-size:26px;line-height:1.15}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:300}
+h1{font-family:var(--serif);font-size:clamp(36px,10vw,50px);line-height:1;font-weight:500;letter-spacing:-.02em;margin:0;text-wrap:balance}
+h2{font-family:var(--serif);font-size:clamp(27px,7vw,34px);line-height:1.1;font-weight:500;letter-spacing:-.015em;margin:0;text-wrap:balance}
+.hand{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.3;margin:0}
 .sub{color:var(--soft);margin:0}
-label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
-label.f small{font-weight:400;color:var(--soft)}
-input[type=text],input[type=number],textarea{font:16px var(--sans);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
-textarea{min-height:110px;resize:vertical}
-input:focus,textarea:focus{outline:2px solid var(--ink);outline-offset:1px;border-color:var(--ink)}
-.q{font-size:14px;font-weight:600;margin:0 0 8px}
+label.f{display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+label.f small{letter-spacing:0;text-transform:none;font-size:13px;color:var(--soft)}
+input[type=text],input[type=number],textarea{font:16px var(--sans);letter-spacing:0;text-transform:none;color:var(--ink);background:var(--paper);border:0;border-bottom:1px solid var(--ink);border-radius:0;padding:10px 0;width:100%}
+textarea{min-height:110px;resize:vertical;border:1px solid var(--ink);padding:12px 14px}
+input:focus,textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 1px 0 var(--ink)}
+textarea:focus{box-shadow:inset 0 0 0 1px var(--ink)}
+.q{font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin:0 0 10px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font:600 15px var(--sans);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 16px;cursor:pointer;min-height:44px}
+.chip{font:400 15px var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:0;padding:10px 16px;cursor:pointer;min-height:44px}
+.chip:hover{border-color:var(--ink)}
 .chip[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .chip:focus-visible,.btn:focus-visible,.link:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .chips.big{flex-direction:column}
-.chips.big .chip{text-align:left;border-radius:14px;padding:14px 16px}
-.chip span{display:block;font-weight:400;font-size:13px;opacity:.75}
-.person{border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:16px;background:var(--card)}
-.phead{display:flex;justify-content:space-between;align-items:center}
-.phead b{font-size:18px;letter-spacing:-.01em}
-.link{all:unset;cursor:pointer;font-size:14px;font-weight:600;color:var(--soft);padding:6px 2px}
-.add{all:unset;cursor:pointer;text-align:center;border:1.5px dashed var(--line);border-radius:16px;padding:16px;font-weight:600}
+.chips.big .chip{text-align:left;padding:14px 16px;font-weight:500}
+.chip span{display:block;font-weight:400;font-size:13px;color:var(--soft)}
+.chip[aria-pressed=true] span{color:#cfcfcf}
+.person{border-top:1px solid var(--ink);padding:16px 0 4px;display:flex;flex-direction:column;gap:18px}
+.phead{display:flex;justify-content:space-between;align-items:baseline}
+.phead b{font-family:var(--serif);font-size:22px;font-weight:500}
+.link{all:unset;cursor:pointer;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);padding:6px 2px;text-decoration:underline;text-underline-offset:4px}
+.add{all:unset;cursor:pointer;text-align:center;border:1px dashed var(--ink);padding:16px;font-size:11px;letter-spacing:.24em;text-transform:uppercase}
 .add:focus-visible{outline:2px solid var(--ink)}
-.nav{position:fixed;left:0;right:0;bottom:0;background:linear-gradient(transparent,var(--paper) 30%);padding:28px 18px 18px}
-.nav div{max-width:560px;margin:0 auto;display:flex;gap:10px}
-.btn{font:700 16px var(--sans);border-radius:14px;padding:15px 18px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;flex:1;text-align:center;text-decoration:none;display:block}
-.btn.ghost{background:var(--paper);color:var(--ink);border-color:var(--line);flex:0 0 auto}
-.err{color:#9b2c2c;font-size:14px;font-weight:600;margin:0}
-.sum{background:var(--wash);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;font-size:15px}
-.sum div b{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);font-weight:700}
+.nav{position:fixed;left:0;right:0;bottom:0;background:linear-gradient(transparent,var(--paper) 30%);padding:28px 22px 18px}
+.nav div{max-width:516px;margin:0 auto;display:flex;gap:10px}
+.btn{font:400 12px var(--sans);letter-spacing:.24em;text-transform:uppercase;border-radius:0;padding:17px 18px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;flex:1;text-align:center;text-decoration:none;display:block}
+.btn.ghost{background:var(--paper);color:var(--ink);flex:0 0 auto}
+.err{color:#9b2c2c;font-size:14px;margin:0}
+.sum{border-top:1px solid var(--ink);padding:16px 0;display:flex;flex-direction:column;gap:12px;font-size:15px}
+.sum div b{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
 .send{display:flex;flex-direction:column;gap:10px}
-.tip{background:#f1e8d6;color:#5b4a2e;border-radius:12px;padding:12px 14px;font-size:14px}
+.tip{border-left:2px solid var(--ink);padding:4px 0 4px 14px;font-size:15px;margin:0}
 .raw{width:100%;min-height:200px;font:14px/1.5 ui-monospace,Menlo,monospace}
-.done{font-family:var(--hand);font-size:30px;text-align:center}
+.done{font-family:var(--serif);font-size:clamp(34px,9vw,44px);line-height:1.05;margin:0}
+.done em{font-weight:400}
 </style>
 
 <div class="wrap">
-  <div class="top"><span class="mark">Just Wear This</span><span class="by">for {{STUDIO}}</span></div>
+  <div class="top"><span class="mark">Just Wear This</span><span class="by">{{STUDIO}}</span></div>
   <div class="bar" aria-hidden="true"><i id="bar"></i></div>
   <main id="main" aria-live="polite"></main>
 </div>
@@ -219,7 +226,7 @@ const STEPS = [
   {id: "thanks", render: () => `
     <div class="step" style="text-align:center;align-items:center">
       <span class="eyebrow">All done</span>
-      <p class="done">Thank you, ${esc(A.who.trim())}!</p>
+      <p class="done">Thank you, <em>${esc(A.who.trim())}!</em></p>
       <p class="sub">Hit send in your ${CFG.sms && !CFG.email ? "texts" : "email"} and ${esc(CFG.studio)} will put together your outfit page.</p>
       <button type="button" class="btn ghost" id="copy" style="flex:0 0 auto">Didn't open? Copy my answers</button>
       <p class="sub" id="copied" hidden></p>

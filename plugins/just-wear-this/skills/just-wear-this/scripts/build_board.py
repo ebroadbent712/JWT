@@ -31,7 +31,7 @@ ROOT = os.path.dirname(HERE)
 LIB = os.path.join(ROOT, "library")
 FONTS = os.path.join(ROOT, "assets", "fonts")
 
-INK = HexColor("#1B1B1B")
+INK = HexColor("#121212")
 SOFT = HexColor("#5A5A5A")
 RULE = HexColor("#CFCFCF")
 PX_PER_PT = 4  # resolution of the composited outfit panels
@@ -51,7 +51,11 @@ def register_fonts():
     for name, file in [
         ("Inter", "Inter-Regular.ttf"), ("Inter-Medium", "Inter-Medium.ttf"),
         ("Inter-SemiBold", "Inter-SemiBold.ttf"), ("Inter-Black", "Inter-Black.ttf"),
-        ("Hand", "Caveat-Medium.ttf"),
+        ("Hand", "BodoniModa-Italic.ttf"),  # notes: brand serif italic (was Caveat handwriting)
+        # brand fonts (Oct 2026): Jost for labels and body, Bodoni Moda for family names, Anton for the wordmark
+        ("Jost-Light", "Jost-Light.ttf"), ("Jost", "Jost-Regular.ttf"), ("Jost-Medium", "Jost-Medium.ttf"),
+        ("Bodoni", "BodoniModa-Medium.ttf"), ("Bodoni-Italic", "BodoniModa-Italic.ttf"),
+        ("Anton", "Anton-Regular.ttf"), ("Archivo-BoldItalic", "Archivo-BoldItalic.ttf"),
     ]:
         pdfmetrics.registerFont(TTFont(name, os.path.join(FONTS, file)))
 
@@ -206,6 +210,20 @@ def spaced(c, x, y, text, font, size, spacing, color=INK, align="left"):
     return w
 
 
+def draw_family_name(c, x, y, name, size, max_w):
+    """'The Callahan family': brand serif, with a trailing 'family' in italic (same as the client page)."""
+    m = re.match(r"^(.*\S)\s+(family)$", name.strip(), re.I)
+    parts = [(m.group(1) + " ", "Bodoni"), ("family", "Bodoni-Italic")] if m else [(name.strip(), "Bodoni")]
+    w = sum(pdfmetrics.stringWidth(t, f, size) for t, f in parts)
+    if w > max_w:
+        size *= max_w / w
+    c.setFillColor(INK)
+    for t, f in parts:
+        c.setFont(f, size)
+        c.drawString(x, y, t)
+        x += pdfmetrics.stringWidth(t, f, size)
+
+
 def hand_underline(c, x, y, w):
     c.setStrokeColor(INK)
     c.setLineWidth(0.9)
@@ -216,12 +234,12 @@ def hand_underline(c, x, y, w):
 
 
 def hand_arrow(c, x0, y0, x1, y1):
-    """A loose, hand-drawn style curved arrow from (x0, y0) to (x1, y1)."""
+    """A thin, gently curved arrow from (x0, y0) to (x1, y1)."""
     c.setStrokeColor(INK)
-    c.setLineWidth(0.75)
+    c.setLineWidth(0.5)
     mx, my = (x0 + x1) / 2, (y0 + y1) / 2
     dx, dy = x1 - x0, y1 - y0
-    cx, cy = mx - dy * 0.35, my + dx * 0.35
+    cx, cy = mx - dy * 0.12, my + dx * 0.12  # a gentle, clean curve (brand: nothing hand-drawn)
     p = c.beginPath()
     p.moveTo(x0, y0)
     p.curveTo(cx, cy, cx, cy, x1, y1)
@@ -387,17 +405,21 @@ def draw_board_page(c, plan, settings, items_by_id, numbering):
     if VIEW_COLS:
         PH = _view_height(len(plan["people"]))
     M = 30
-    # Header
+    # Header: family name in the brand serif (quiet, client-facing), small wordmark beneath
     c.setFillColor(INK)
-    c.setFont("Inter-Black", 30)
-    c.drawString(M, PH - M - 26, "JUST WEAR THIS.")
-    sub = f"{plan['family_name']}  ·  OUTFIT PLAN".upper()
-    spaced(c, M + 1, PH - M - 44, sub, "Inter-Medium", 6.8, 2.1)
-    c.setFont("Inter", 17)
+    right_w = max(pdfmetrics.stringWidth(plan.get("title_right", ""), "Bodoni-Italic", 16),
+                  len(plan.get("subtitle_right", "")) * 6.3 + 40, 150)
+    draw_family_name(c, M, PH - M - 27, plan["family_name"], 30, PW - 2 * M - right_w - 24)
+    c.setFont("Anton", 9.5)
+    c.drawString(M + 1, PH - M - 46, "JUST WEAR THIS")
+    aw = pdfmetrics.stringWidth("JUST WEAR THIS", "Anton", 9.5)
+    spaced(c, M + 1 + aw + 9, PH - M - 46, "OUTFIT PLAN", "Jost", 6.8, 2.1)
+    c.setFillColor(INK)
+    c.setFont("Bodoni-Italic", 16)
     c.drawRightString(PW - M, PH - M - 22, plan.get("title_right", ""))
-    spaced(c, PW - M, PH - M - 40, plan.get("subtitle_right", "").upper(), "Inter-Medium", 6.3, 1.9, align="right")
+    spaced(c, PW - M, PH - M - 39, plan.get("subtitle_right", "").replace(" | ", "  ·  ").upper(), "Jost", 6.3, 1.9, align="right")
     if plan.get("dress_level"):
-        spaced(c, PW - M, PH - M - 52, f"DRESS LEVEL  ·  {plan['dress_level'].upper()}", "Inter-SemiBold", 6.3, 1.9, align="right")
+        spaced(c, PW - M, PH - M - 51, f"DRESS LEVEL  ·  {plan['dress_level'].upper()}", "Jost", 6.3, 1.9, align="right")
 
     top = PH - M - 62
     footer_h = 100
@@ -435,32 +457,36 @@ def draw_board_page(c, plan, settings, items_by_id, numbering):
     # Footer: palette, headline, story
     story = plan["_story"]
     c.setFillColor(INK)
-    c.setFont("Inter", 12)
-    c.drawString(M + 4, bottom - 24, "Color palette")
+    spaced(c, M + 4, bottom - 22, "YOUR COLORS", "Jost", 6.8, 2.1)
     sw, gap = 38, 7
     for i, sw_ in enumerate(story["palette"][:5]):
         c.setFillColor(HexColor(sw_["hex"]))
         c.rect(M + 4 + i * (sw + gap), M + 15, sw, sw, stroke=0, fill=1)
+        if sw_["hex"].lower() in ("#ffffff", "#fffaf0", "#f8f6f0", "#faf8f3"):
+            c.setStrokeColor(RULE)
+            c.rect(M + 4 + i * (sw + gap), M + 15, sw, sw, stroke=1, fill=0)
         c.setFillColor(SOFT)
-        c.setFont("Inter", 5.6)
-        for j, nl in enumerate(wrap(sw_["name"], "Inter", 5.6, sw)[:2]):
+        c.setFont("Jost", 5.8)
+        for j, nl in enumerate(wrap(sw_["name"], "Jost", 5.8, sw)[:2]):
             c.drawString(M + 4 + i * (sw + gap), M + 6 - j * 7, nl)
     divx = M + 4 + 5 * (sw + gap) + 14
     c.setStrokeColor(RULE)
     c.line(divx, bottom - 14, divx, M + 6)
     c.setFillColor(INK)
-    c.setFont("Inter", 13.5)
-    for i, line in enumerate(plan.get("headline", [])[:3]):
+    heads = plan.get("headline", [])[:3]
+    fonts = ["Bodoni", "Bodoni-Italic", "Bodoni"]
+    for i, line in enumerate(heads):
+        c.setFont(fonts[i], 14)
         c.drawString(divx + 18, bottom - 30 - i * 19, line)
-    hw = max([pdfmetrics.stringWidth(l, "Inter", 13.5) for l in plan.get("headline", [])[:3]] or [100])
+    hw = max([pdfmetrics.stringWidth(l, fonts[i], 14) for i, l in enumerate(heads)] or [100])
     tx = divx + 18 + hw + 22
-    c.setFont("Inter", 7.6)
-    for i, line in enumerate(wrap(plan.get("story", ""), "Inter", 7.6, PW - M - tx)[:7]):
+    c.setFont("Jost", 7.8)
+    for i, line in enumerate(wrap(plan.get("story", ""), "Jost", 7.8, PW - M - tx)[:7]):
         c.drawString(tx, bottom - 28 - i * 10.5, line)
     studio = settings.get("studio_name")
     if studio:
         c.setFillColor(SOFT)
-        spaced(c, PW - M, M - 14, f"STYLED BY {studio.upper()}", "Inter-Medium", 5.6, 1.6, color=SOFT, align="right")
+        spaced(c, PW - M, M - 14, f"STYLED BY {studio.upper()}", "Jost", 5.6, 1.6, color=SOFT, align="right")
 
 
 def occupancy(panel_img, area_w, area_h, band):
@@ -498,12 +524,16 @@ def rect_gap(a, b):
 
 def draw_person_panel(c, person, items_by_id, numbering, x, y, w, h, per_row):
     label_size = 21 if per_row <= 2 else 17
+    # names: Jost caps with wide letter spacing (brand label style), no underline
+    lab_pt = label_size * 0.72
     c.setFillColor(INK)
-    c.setFont("Inter", label_size)
-    label = person["label"]
-    c.drawString(x, y + h - label_size, label)
-    lw = pdfmetrics.stringWidth(label, "Inter", label_size)
-    hand_underline(c, x - 2, y + h - label_size - 7, lw + 6)
+    t = c.beginText(x, y + h - label_size)
+    t.setFont("Jost", lab_pt)
+    t.setCharSpace(lab_pt * 0.22)
+    t.textOut(person["label"].upper())
+    t.setCharSpace(0)  # character spacing persists in the PDF state; reset it so notes aren't spaced out
+    c.drawText(t)
+    lw = pdfmetrics.stringWidth(person["label"].upper(), "Jost", lab_pt) + len(person["label"]) * lab_pt * 0.22
 
     items = [dict(items_by_id[i]) for i in person["items"]]
     # A piece the client owns and loves is the point of their look: keep it big.
@@ -593,7 +623,7 @@ def draw_person_panel(c, person, items_by_id, numbering, x, y, w, h, per_row):
                 chunks = [words[i:i + k] for i in range(0, len(words), k)]
                 tries.append([f"{num} {' '.join(chunks[0])}"] + [' '.join(c) for c in chunks[1:-1]] + [' '.join(chunks[-1]) + own])
         for lines_ in tries:
-            tw = max(pdfmetrics.stringWidth(t, "Inter", fs) for t in lines_)
+            tw = max(pdfmetrics.stringWidth(t, "Jost", fs) for t in lines_)
             bh = th * len(lines_)
             cands = []
             for yy in [py + ph + 1, py + ph + 4, py - bh - 2, py + ph - bh - 2, py + ph * 0.7]:
@@ -622,7 +652,7 @@ def draw_person_panel(c, person, items_by_id, numbering, x, y, w, h, per_row):
                 break
         if spot is None:  # last resort: anywhere free, nearest to the piece
             text = versions[-1]
-            tw = pdfmetrics.stringWidth(text, "Inter", fs)
+            tw = pdfmetrics.stringWidth(text, "Jost", fs)
             best = None
             for yy in range(0, int(H - th), 3):
                 for xx in range(0, int(W - tw), 4):
@@ -633,10 +663,10 @@ def draw_person_panel(c, person, items_by_id, numbering, x, y, w, h, per_row):
             spot = (best[1], best[2]) if best else (cx - tw / 2, py + ph + 1)
             text = [text] if isinstance(text, str) else text
             text = text[:1] if len(text) > 1 else text
-            tw = pdfmetrics.stringWidth(text[0], "Inter", fs)
+            tw = pdfmetrics.stringWidth(text[0], "Jost", fs)
         taken.append((spot[0], spot[1], tw, th * len(text)))
         c.setFillColor(INK)
-        c.setFont("Inter", fs)
+        c.setFont("Jost", fs)
         for li, t in enumerate(text if not HIDE_LABELS else []):
             bx, by = to_pdf(spot[0], spot[1] + fs + li * th)
             c.drawString(bx, by, t)
@@ -735,28 +765,30 @@ def draw_details_page(c, plan, settings, items_by_id, numbering, uses):
     M = 42
     y = PH - M - 10
     c.setFillColor(INK)
-    c.setFont("Inter-Black", 20)
-    c.drawString(M, y, "JUST WEAR THIS.")
-    spaced(c, PW - M, y + 4, f"{plan['family_name']}  ·  THE DETAILS".upper(), "Inter-Medium", 6.5, 1.9, align="right")
+    c.setFont("Anton", 15)
+    c.drawString(M, y, "JUST WEAR THIS")
+    spaced(c, PW - M, y + 3, f"{plan['family_name']}  ·  THE DETAILS".upper(), "Jost", 6.5, 1.9, align="right")
+    c.setStrokeColor(INK)
+    c.setLineWidth(0.6)
+    c.line(M, y - 10, PW - M, y - 10)
     y -= 40
 
     def heading(t):
         nonlocal y
         c.setFillColor(INK)
-        c.setFont("Inter-SemiBold", 11.5)
+        c.setFont("Bodoni", 15)
         c.drawString(M, y, t)
-        hand_underline(c, M - 1, y - 5, pdfmetrics.stringWidth(t, "Inter-SemiBold", 11.5) + 4)
         y -= 22
 
     heading("Why it works")
-    c.setFont("Inter", 9.3)
-    for line in wrap(plan.get("why_it_works", ""), "Inter", 9.3, PW - 2 * M):
+    c.setFont("Jost", 9.3)
+    for line in wrap(plan.get("why_it_works", ""), "Jost", 9.3, PW - 2 * M):
         c.drawString(M, y, line)
         y -= 13.5
     y -= 14
 
     heading("Shop the look")
-    c.setFont("Inter", 7.6)
+    c.setFont("Jost", 7.6)
     c.setFillColor(SOFT)
     def _links(it):
         return it.get("shop_links") or ({"mid": it["shop_url"]} if it.get("shop_url") else {})
@@ -770,7 +802,7 @@ def draw_details_page(c, plan, settings, items_by_id, numbering, uses):
     def table_header():
         nonlocal y
         c.setFillColor(SOFT)
-        c.setFont("Inter-Medium", 7)
+        c.setFont("Jost", 6.6)
         c.drawString(M, y, "NO.")
         c.drawString(M + 30, y, "PIECE")
         c.drawString(M + 220, y, "FOR")
@@ -787,13 +819,16 @@ def draw_details_page(c, plan, settings, items_by_id, numbering, uses):
         c.showPage()
         y = PH - M - 10
         c.setFillColor(INK)
-        c.setFont("Inter-Black", 20)
-        c.drawString(M, y, "JUST WEAR THIS.")
-        spaced(c, PW - M, y + 4, f"{plan['family_name']}  ·  THE DETAILS, CONTINUED".upper(), "Inter-Medium", 6.5, 1.9, align="right")
+        c.setFont("Anton", 15)
+        c.drawString(M, y, "JUST WEAR THIS")
+        spaced(c, PW - M, y + 3, f"{plan['family_name']}  ·  THE DETAILS, CONTINUED".upper(), "Jost", 6.5, 1.9, align="right")
+        c.setStrokeColor(INK)
+        c.setLineWidth(0.6)
+        c.line(M, y - 10, PW - M, y - 10)
         y -= 40
 
     table_header()
-    checklist_h = 26 + sum(13.5 * len(wrap(t, "Inter", 9.3, PW - 2 * M - 18)) + 4 for t in plan.get("prep_checklist", []))
+    checklist_h = 26 + sum(13.5 * len(wrap(t, "Jost", 9.3, PW - 2 * M - 18)) + 4 for t in plan.get("prep_checklist", []))
     footer_h = 50
     rows = sorted(numbering.items(), key=lambda kv: kv[1])
     n = max(1, len(rows))
@@ -811,7 +846,7 @@ def draw_details_page(c, plan, settings, items_by_id, numbering, uses):
     fs = 8.8 if step >= 18 else 8.4
     for idx, (item_id, num) in enumerate(rows):
         if y - step < M + 40:
-            c.setFont("Inter", 6.8)
+            c.setFont("Jost", 6.8)
             c.setFillColor(SOFT)
             c.drawString(M, y + 2, "Continued on the next page.")
             new_page()
@@ -819,12 +854,12 @@ def draw_details_page(c, plan, settings, items_by_id, numbering, uses):
             table_header()
         it = items_by_id[item_id]
         c.setFillColor(INK)
-        c.setFont("Inter", fs)
+        c.setFont("Jost", fs)
         c.drawString(M, y, f"{num:02d}")
         c.drawString(M + 30, y, it["name"])
         c.setFillColor(SOFT)
         for_text = ", ".join(uses[item_id])
-        for_lines = wrap(for_text, "Inter", fs, col_x[0] - (M + 220) - 10)
+        for_lines = wrap(for_text, "Jost", fs, col_x[0] - (M + 220) - 10)
         c.drawString(M + 220, y, for_lines[0] + ("…" if len(for_lines) > 1 else ""))
         if item_id in OWNED:
             c.setFillColor(INK)
@@ -836,32 +871,32 @@ def draw_details_page(c, plan, settings, items_by_id, numbering, uses):
                 url = links.get(key)
                 if url:
                     c.setFillColor(INK)
-                    c.setFont("Inter-SemiBold", min(8.4, fs))
-                    c.drawString(cx, y, "Shop >")
-                    lw = pdfmetrics.stringWidth("Shop >", "Inter-SemiBold", min(8.4, fs))
+                    c.setFont("Jost-Medium", min(8.4, fs))
+                    c.drawString(cx, y, "Shop ›")
+                    lw = pdfmetrics.stringWidth("Shop ›", "Jost-Medium", min(8.4, fs))
                     c.linkURL(url, (cx - 2, y - 3, cx + lw + 2, y + 9), relative=0)
                 else:
                     c.setFillColor(HexColor("#B5B5B5"))
-                    c.setFont("Inter", 8.4)
+                    c.setFont("Jost", 8.4)
                     c.drawString(cx + 6, y, "–")
         y -= step * 0.35
         c.setStrokeColor(HexColor("#EDEDED"))
         c.line(M, y, PW - M, y)
         y -= step * 0.65
-    c.setFont("Inter", 6.8)
+    c.setFont("Jost", 6.8)
     c.setFillColor(SOFT)
     c.drawString(M, y + 2, "Links show the look, not always the exact piece. A dash means there's no great match at that price.")
-    y -= 18
+    y -= 30
     if y - checklist_h < M + footer_h:
         new_page()
 
     heading("The week before")
-    c.setFont("Inter", 9.3)
+    c.setFont("Jost", 9.3)
     for item in plan.get("prep_checklist", []):
         c.setStrokeColor(INK)
         c.setLineWidth(0.7)
         c.rect(M, y - 1.5, 8, 8, stroke=1, fill=0)
-        for i, line in enumerate(wrap(item, "Inter", 9.3, PW - 2 * M - 18)):
+        for i, line in enumerate(wrap(item, "Jost", 9.3, PW - 2 * M - 18)):
             c.setFillColor(INK)
             c.drawString(M + 16, y, line)
             y -= 13.5
@@ -869,10 +904,10 @@ def draw_details_page(c, plan, settings, items_by_id, numbering, uses):
 
     # Footer
     c.setFillColor(SOFT)
-    c.setFont("Inter", 6.8)
+    c.setFont("Jost", 6.8)
     disclosure = settings.get("disclosure", "")
     fy = M
-    for line in reversed(wrap(disclosure, "Inter", 6.8, PW - 2 * M)):
+    for line in reversed(wrap(disclosure, "Jost", 6.8, PW - 2 * M)):
         c.drawString(M, fy, line)
         fy += 9.5
     studio = settings.get("studio_name")
@@ -882,7 +917,7 @@ def draw_details_page(c, plan, settings, items_by_id, numbering, uses):
         c.setFont("Hand", 15)
         c.drawString(M, fy + 10, f"Can't wait to see you! — {studio}")
         if site:
-            c.setFont("Inter", 7.5)
+            c.setFont("Jost", 7.5)
             c.setFillColor(SOFT)
             c.drawRightString(PW - M, fy + 12, site)
 
