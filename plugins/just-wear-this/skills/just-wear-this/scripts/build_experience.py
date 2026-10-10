@@ -2,7 +2,7 @@
 check-offs that remember themselves on the client's phone, palette, why it works and the week-before list.
 Usage: python3 build_experience.py <plan.json> --out <folder>   (writes <slug>-plan.html)
 Publish the HTML as an artifact and send the client the link; the PDF stays as the printable version."""
-import argparse, base64, html, io, json, os, re, sys
+import argparse, base64, contextlib, html, io, json, os, re, sys
 from urllib.parse import urlparse
 from PIL import Image
 
@@ -94,7 +94,7 @@ def recs_section(settings, plan, e):
             f'<p class="story">A few favorites from {e(studio)}.</p><ul class="reclist">{"".join(cards)}</ul></section>')
 
 
-def build(plan_path, out_dir):
+def build(plan_path, out_dir, pdf=False):
     plan = json.load(open(plan_path))
     catalog = json.load(open(os.path.join(LIB, "catalog.json")))
     settings = json.load(open(os.path.join(ROOT, "settings.json")))
@@ -124,13 +124,20 @@ def build(plan_path, out_dir):
     os.makedirs(out_dir, exist_ok=True)
     slug = bb.slugify(plan["family_name"])
     # page 1 of the board is the first thing they see; each person's panel is a tap target
-    bb.build(plan_path, out_dir)  # the printable PDF, with number labels
+    if pdf:  # only when the photographer asks for a printable version
+        bb.build(plan_path, out_dir)
     view_dir = os.path.join(out_dir, ".page-view")
     bb.HIDE_LABELS, bb.VIEW_COLS = True, 2
+    buf = io.StringIO()
     try:
-        bb.build(plan_path, view_dir)  # the same board, two people across and without labels, for a phone
+        with contextlib.redirect_stdout(buf):
+            bb.build(plan_path, view_dir)  # the board, two people across and without labels, for a phone
     finally:
         bb.HIDE_LABELS, bb.VIEW_COLS = False, None
+    for line in buf.getvalue().splitlines():  # pass CHECK lines through; the engine's own PDF is internal, not a deliverable
+        if line.startswith("Board PDF:"):
+            continue
+        print(line.replace("Preview PNG:", "Board preview (look at this):"))
     board_png = os.path.join(view_dir, f"{slug}-board-preview.png")
     panels = json.load(open(os.path.join(view_dir, f"{slug}-panels.json")))
     # keep only the people grid (the page has its own header, palette and story)
@@ -478,5 +485,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("plan")
     ap.add_argument("--out", default="output")
+    ap.add_argument("--pdf", action="store_true", help="also write a printable board PDF (only on request)")
     a = ap.parse_args()
-    build(a.plan, a.out)
+    build(a.plan, a.out, pdf=a.pdf)

@@ -114,7 +114,7 @@ Palettes live in `library/catalog.json`. Choosing a story:
 - Pick the store with the widest size range (plus, petite, tall, toddler through big kid) when two matches are equally close.
 - Links are "shop the look", not exact items. A blank tier means no good match exists.
 - Never search stores live while building a board. Use the links in the catalog only.
-- Boards print smart links (justwearthis.co/s/...) that forward to the current store page, so a sold-out item can be swapped without re-sending the board.
+- Client pages use smart links (justwearthis.co/s/...) that forward to the current store page, so a sold-out item can be swapped without re-sending the board.
 
 ## Variety (so clients don't all look the same)
 

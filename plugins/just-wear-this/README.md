@@ -1,12 +1,13 @@
-# Just Wear This (v1.7.1)
+# Just Wear This (v1.8.0)
 
 Done-for-you family photo outfit plans, inside Claude.
 
-Paste a client's questionnaire answers into a chat and Claude builds a coordinated outfit board PDF:
-page 1 is the board, page 2 the details (why it works, shop links at three price points, a prep checklist).
+Paste a client's questionnaire answers into a chat and Claude builds a coordinated outfit plan as a client page:
+everyone's outfits on one board, every piece to shop at a few price points, check-offs as things arrive,
+the family's colors and a week-before checklist. Share it with your client as a link.
 
 - Send a photo of a client's own piece and ask "does this work?"
-- Ask for changes ("warmer layer for Dad") and Claude rebuilds the board.
+- Ask for changes ("warmer layer for Dad") and Claude updates the page; the link you sent keeps working.
 
 ## Install
 
