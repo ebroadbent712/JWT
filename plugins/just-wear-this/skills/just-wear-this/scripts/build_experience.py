@@ -1,7 +1,7 @@
 """The client's outfit plan as a tap-through page: the board itself up top (tap a person to jump to their pieces),
 check-offs that remember themselves on the client's phone, palette, why it works and the week-before list.
 Usage: python3 build_experience.py <plan.json> --out <folder>   (writes <slug>-plan.html)
-Publish the HTML as an artifact and send the client the link; the PDF stays as the printable version."""
+Publish the HTML as an artifact and send the client the link."""
 import argparse, base64, contextlib, html, io, json, os, re, sys
 from urllib.parse import urlparse
 from PIL import Image
@@ -390,7 +390,7 @@ a.rreach{text-decoration:underline;text-decoration-color:var(--line);text-underl
     <span class="who">{{STUDIO}}</span>
     {{CONTACT}}
     <small>{{WEBSITE}}</small>
-    <small>Your printable outfit board came with this link as a PDF. Links show the look, not always the exact piece.</small>
+    <small>Links show the look, not always the exact piece.</small>
   </footer>
 </div>
 
