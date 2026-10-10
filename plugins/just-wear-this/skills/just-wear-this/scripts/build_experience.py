@@ -179,6 +179,8 @@ def build(plan_path, out_dir, pdf=False):
     data = {"slug": slug, "pieces": pieces, "people": people, "checklist": plan.get("prep_checklist", [])}
 
     e = html.escape
+    if not (settings.get("studio_name") or "").strip():
+        print("CHECK (fix before delivering): no studio name. Ask the photographer for her studio details and put them in settings_override.")
     studio = settings.get("studio_name") or "your photographer"
     website = settings.get("website") or ""
     swatches = "".join(f'<li><span class="chip" style="background:{e(sw["hex"])}"></span><span>{e(sw["name"])}</span></li>' for sw in pal)
