@@ -1,5 +1,5 @@
 {
- "library_version": "1.5.4",
+ "library_version": "1.6.0",
  "color_stories": {
   "cabernet-navy": {
    "name": "Cabernet and Navy",
@@ -5175,6 +5175,835 @@
     "splurge": "https://www.nordstrom.com/s/baby-bling-3-pack-baby-fab-skinny-bow-headbands-baby/7521829"
    },
    "baby_for": "girl"
+  },
+  {
+   "id": "W-DRS-023",
+   "file": "w_drs_023.jpg",
+   "name": "Navy floral midi dress (cabernet and blush blooms)",
+   "person": "women",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#1F2A44",
+   "pattern": true,
+   "colors": [
+    "navy",
+    "denim blue"
+   ],
+   "color_stories": [
+    "cabernet-navy"
+   ],
+   "link_tier": "3 links",
+   "description": "Navy floral midi dress (cabernet and blush blooms). Navy smocked tiered midi dress, tonal: deep ink-navy ground with lighter royal/denim-blue botanical florals, 3/4 ruffle-cuff sleeves, ruffle hem.",
+   "shop_links": {
+    "everyday": "https://www.target.com/p/women-39-s-smocked-midi-dress-universal-thread-8482-navy-blue-floral-m/-/A-94820798",
+    "mid": "https://balticborn.com/products/aubrey-smocked-midi-dress-navy-floral",
+    "splurge": "https://www.jcrew.com/p/womens/categories/clothing/swimwear/smocked-midi-dress-in-midnight-blue-floral/BM460"
+   },
+   "pattern_scale": "medium floral",
+   "pattern_family": "navy-tonal-floral",
+   "statement": true
+  },
+  {
+   "id": "W-DRS-024",
+   "file": "w_drs_024.jpg",
+   "name": "Cream maxi dress with rust and mustard florals",
+   "person": "women",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#EFE3CC",
+   "pattern": true,
+   "colors": [
+    "cream",
+    "rust",
+    "mustard"
+   ],
+   "color_stories": [
+    "harvest"
+   ],
+   "link_tier": "1 link",
+   "description": "Cream maxi dress with rust and mustard florals. Cream chiffon maxi dress with a surplice V bodice, side waist ties, short flutter sleeves and an angled tiered skirt; bold medium-to-large florals in rust, terracotta and tan/mustard on a soft cream ground.",
+   "shop_links": {
+    "mid": "https://balticborn.com/products/katherine-maxi-dress-cream-rust-floral"
+   },
+   "pattern_scale": "large floral",
+   "pattern_family": "rust-floral-cream",
+   "statement": true
+  },
+  {
+   "id": "W-DRS-025",
+   "file": "w_drs_025.jpg",
+   "name": "Forest green floral midi dress",
+   "person": "women",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#2E4632",
+   "pattern": true,
+   "colors": [
+    "forest",
+    "ivory"
+   ],
+   "color_stories": [
+    "evergreen"
+   ],
+   "link_tier": "1 link",
+   "description": "Forest green floral midi dress. Dark green midi dress with large ivory/beige flowers and leaves, short sleeves, faux button front.",
+   "shop_links": {
+    "mid": "https://petalandpup.com/products/lisbeth-midi-dress-green-floral"
+   },
+   "pattern_scale": "large floral",
+   "pattern_family": "forest-ivory-floral",
+   "statement": true
+  },
+  {
+   "id": "W-DRS-026",
+   "file": "w_drs_026.jpg",
+   "name": "Cream rose floral midi dress",
+   "person": "women",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#F0E6D8",
+   "pattern": true,
+   "colors": [
+    "cream",
+    "dusty rose",
+    "berry",
+    "sage"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Cream rose floral midi dress. Off-white chiffon dress with a rounded neckline and back keyhole button, short sheer flutter sleeves, removable self-tie waist belt and a flowing lined skirt with a side slit; medium-to-large roses in dusty rose and berry with sage/olive leaves scattered on a cream ground.",
+   "shop_links": {
+    "mid": "https://balticborn.com/products/naomi-short-sleeve-maxi-dress-cream-rose-floral"
+   },
+   "pattern_scale": "large floral",
+   "pattern_family": "rose-floral-cream",
+   "statement": true
+  },
+  {
+   "id": "W-DRS-027",
+   "file": "w_drs_027.jpg",
+   "name": "Olive floral midi dress",
+   "person": "women",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#6B6A3A",
+   "pattern": true,
+   "colors": [
+    "olive",
+    "cream"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Olive floral midi dress. Olive green jersey midi tea dress with spaced ivory line-drawn flowers, pointed collar, short puff sleeves.",
+   "shop_links": {
+    "mid": "https://us.boden.com/products/women-heidi-jersey-midi-tea-dress-olive-floral-field-spaced-d1765grn"
+   },
+   "pattern_scale": "medium floral",
+   "pattern_family": "olive-ivory-floral",
+   "statement": true
+  },
+  {
+   "id": "W-DRS-028",
+   "file": "w_drs_028.jpg",
+   "name": "Dusty rose floral maxi dress",
+   "person": "women",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#C99393",
+   "pattern": true,
+   "colors": [
+    "mauve",
+    "ivory",
+    "plum"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Dusty rose floral maxi dress. Dusty mauve floral maxi: large ivory blooms with taupe shading and deep plum leaves, flutter sleeves, sweetheart neckline.",
+   "shop_links": {
+    "mid": "https://balticborn.com/products/aveline-maxi-dress-dusty-mauve-floral"
+   },
+   "pattern_scale": "large floral",
+   "pattern_family": "mauve-ivory-floral",
+   "statement": true
+  },
+  {
+   "id": "T-DRS-009",
+   "file": "t_drs_009.jpg",
+   "name": "Navy floral toddler dress",
+   "person": "toddlers",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#1F2A44",
+   "pattern": true,
+   "colors": [
+    "navy",
+    "blush",
+    "red"
+   ],
+   "color_stories": [
+    "cabernet-navy"
+   ],
+   "link_tier": "2 links",
+   "description": "Navy floral toddler dress. Toddler girl's woven cotton dress with long gathered puff sleeves, a round neck, fitted bodice and full gathered knee-length skirt, in a small-scale floral print of blush-pink and red blooms with green leaves on a deep navy ground.",
+   "shop_links": {
+    "mid": "https://us.boden.com/products/girls-betsy-woven-puff-sleeve-dress-navy-floral-g6119mul",
+    "splurge": "https://www.rachelriley.com/products/floral-ls-button-front-dress-bl-aw25"
+   },
+   "pattern_scale": "ditsy floral",
+   "pattern_family": "navy-ditsy-floral",
+   "toddler_for": "girl"
+  },
+  {
+   "id": "T-TOP-005",
+   "file": "t_top_005.jpg",
+   "name": "Cabernet and navy plaid toddler shirt",
+   "person": "toddlers",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#6B1E2E",
+   "pattern": true,
+   "colors": [
+    "red",
+    "green",
+    "navy"
+   ],
+   "color_stories": [
+    "evergreen",
+    "cabernet-navy"
+   ],
+   "link_tier": "3 links",
+   "description": "Cabernet and navy plaid toddler shirt. Toddler flannel shirt in a red holiday tartan with green and navy bands and fine yellow lines.",
+   "shop_links": {
+    "everyday": "https://www.target.com/p/toddler-boys-39-plaid-flannel-shirt-cat-38-jack-8482-red-4t/-/A-94662696",
+    "mid": "https://us.boden.com/products/boys-cosy-cotton-check-shirt-red-check-b2779bur",
+    "splurge": "https://www.jcrew.com/p/boys/categories/clothing/shirts/long-sleeve-casual/boys-lightweight-flannel-shirt-in-snowy-stewart-tartan/AQ500"
+   },
+   "pattern_scale": "medium tartan",
+   "pattern_family": "red-holiday-tartan",
+   "toddler_for": "boy"
+  },
+  {
+   "id": "T-DRS-010",
+   "file": "t_drs_010.jpg",
+   "name": "Rust floral toddler dress",
+   "person": "toddlers",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#B4562E",
+   "pattern": true,
+   "colors": [
+    "cream",
+    "rust",
+    "mustard"
+   ],
+   "color_stories": [
+    "harvest"
+   ],
+   "link_tier": "1 link",
+   "description": "Rust floral toddler dress. Toddler girl's smocked woven cotton dress with a round neck, smocked chest panel, short puff sleeves and full gathered knee-length skirt, in a small autumn floral of rust, terracotta and mustard blooms with olive leaves on a cream ground.",
+   "shop_links": {
+    "splurge": "https://www.rachelriley.com/products/woodland-floral-smocked-dress"
+   },
+   "pattern_scale": "ditsy floral",
+   "pattern_family": "rust-floral-cream",
+   "toddler_for": "girl"
+  },
+  {
+   "id": "T-TOP-006",
+   "file": "t_top_006.jpg",
+   "name": "Brown and cream gingham toddler shirt",
+   "person": "toddlers",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#7A5236",
+   "pattern": true,
+   "colors": [
+    "brown",
+    "royal blue",
+    "cream"
+   ],
+   "color_stories": [
+    "harvest"
+   ],
+   "link_tier": "1 link",
+   "description": "Brown and cream gingham toddler shirt. Toddler flannel shirt, cinnamon-brown plaid crossed with royal blue and cream bands.",
+   "shop_links": {
+    "mid": "https://us.boden.com/products/boys-cosy-cotton-check-shirt-brown-check-b2779brn"
+   },
+   "pattern_scale": "medium plaid",
+   "pattern_family": "brown-blue-plaid",
+   "toddler_for": "boy"
+  },
+  {
+   "id": "T-TOP-007",
+   "file": "t_top_007.jpg",
+   "name": "Forest tartan toddler flannel shirt",
+   "person": "toddlers",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#2E4632",
+   "pattern": true,
+   "colors": [
+    "forest",
+    "red",
+    "navy"
+   ],
+   "color_stories": [
+    "evergreen"
+   ],
+   "link_tier": "2 links",
+   "description": "Forest tartan toddler flannel shirt. Toddler flannel shirt, forest-green tartan with red and navy bands and fine gold lines.",
+   "shop_links": {
+    "everyday": "https://www.target.com/p/toddler-boys-39-plaid-flannel-shirt-cat-38-jack-8482-green-4t/-/A-94662702",
+    "mid": "https://us.boden.com/products/boys-cosy-cotton-check-shirt-dark-green-check-b2779dnv"
+   },
+   "pattern_scale": "medium tartan",
+   "pattern_family": "forest-tartan",
+   "toddler_for": "boy"
+  },
+  {
+   "id": "T-DRS-011",
+   "file": "t_drs_011.jpg",
+   "name": "Burgundy floral toddler dress",
+   "person": "toddlers",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#F0E6D8",
+   "pattern": true,
+   "colors": [
+    "wine",
+    "ivory",
+    "dusty blue"
+   ],
+   "color_stories": [
+    "evergreen",
+    "cabernet-navy"
+   ],
+   "link_tier": "2 links",
+   "description": "Burgundy floral toddler dress. Toddler long-sleeve dress, wine/burgundy ground with tiny ivory and dusty-blue flowers.",
+   "shop_links": {
+    "mid": "https://us.boden.com/products/girls-celia-wing-sleeve-dress-port-bird-print-g6111red",
+    "splurge": "https://www.nordstrom.com/s/looms-brushed-floral-dress-collection-toddler-little-kid-big-kid/8617067"
+   },
+   "pattern_scale": "ditsy floral",
+   "pattern_family": "wine-ditsy-floral",
+   "toddler_for": "girl"
+  },
+  {
+   "id": "T-DRS-012",
+   "file": "t_drs_012.jpg",
+   "name": "Rose floral toddler dress",
+   "person": "toddlers",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#F0E6D8",
+   "pattern": true,
+   "colors": [
+    "cream",
+    "pink",
+    "green"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "3 links",
+   "description": "Rose floral toddler dress. Toddler girl's hand-smocked cotton dress with a round collarless neck, smocked yoke, gently puffed short sleeves and a full gathered knee-length skirt, in a soft watercolor print of medium-scale pink roses and fresh green leaves on a cream ground.",
+   "shop_links": {
+    "everyday": "https://www.target.com/p/toddler-girls-39-floral-dress-cat-38-jack-8482-cream-4t/-/A-92694345",
+    "mid": "https://us.boden.com/products/girls-posie-twirly-woven-dress-pink-floral-g6164pin",
+    "splurge": "https://www.rachelriley.com/products/pink-classic-rose-smocked-dress"
+   },
+   "pattern_scale": "medium floral",
+   "pattern_family": "rose-floral-cream",
+   "toddler_for": "girl"
+  },
+  {
+   "id": "T-TOP-008",
+   "file": "t_top_008.jpg",
+   "name": "Rose and cream gingham toddler shirt",
+   "person": "toddlers",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#E4BFC0",
+   "pattern": true,
+   "colors": [
+    "pink",
+    "white"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Rose and cream gingham toddler shirt. Toddler boy's long-sleeve button-down shirt in crisp cotton poplin with a pointed button-down collar, buttoned cuffs and a chest pocket, in a small rose-pink and white gingham check.",
+   "shop_links": {
+    "mid": "https://hopeandhenry.com/products/24sb2000v-classic-pink-gingham-stretch-poplin-button-down-shirt"
+   },
+   "pattern_scale": "small check",
+   "pattern_family": "pink-gingham",
+   "toddler_for": "boy"
+  },
+  {
+   "id": "G-DRS-014",
+   "file": "g_drs_014.jpg",
+   "name": "Rust and camel plaid girls' dress",
+   "person": "girls",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#9C4A2A",
+   "pattern": true,
+   "colors": [
+    "rust",
+    "camel",
+    "chocolate",
+    "cream"
+   ],
+   "color_stories": [
+    "harvest"
+   ],
+   "link_tier": "1 link",
+   "description": "Rust and camel plaid girls' dress. ",
+   "shop_links": {
+    "mid": "https://www.janieandjack.com/item/girls-plaid-jacquard-dropwaist-dress-105879002.html?lang=en_US"
+   },
+   "pattern_scale": "medium plaid",
+   "pattern_family": "rust-camel-plaid"
+  },
+  {
+   "id": "G-DRS-015",
+   "file": "g_drs_015.jpg",
+   "name": "Sage floral smocked girls' dress",
+   "person": "girls",
+   "category": "dress",
+   "layout_role": "hero",
+   "hex": "#A3B18A",
+   "pattern": true,
+   "colors": [
+    "cream",
+    "pink",
+    "sage"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "3 links",
+   "description": "Sage floral smocked girls' dress. Girl's hand-smocked cotton dress with a round neck, smocked chest panel, short puff sleeves and a full gathered knee-length skirt, in a ditsy floral of small pink blooms with sage and olive green leaves on a cream ground.",
+   "shop_links": {
+    "everyday": "https://www.target.com/p/girls-39-puff-short-sleeve-woven-floral-dress-cat-38-jack-8482-cream-l-plus/-/A-94795434",
+    "mid": "https://us.boden.com/products/girls-maude-ruffle-shirt-dress-green-berry-floral-g6160jad",
+    "splurge": "https://www.rachelriley.com/products/floral-smocked-dress"
+   },
+   "pattern_scale": "ditsy floral",
+   "pattern_family": "sage-ditsy-floral"
+  },
+  {
+   "id": "B-TOP-009",
+   "file": "b_top_009.jpg",
+   "name": "Navy and cabernet check boys' shirt",
+   "person": "boys",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#2B3557",
+   "pattern": true,
+   "colors": [
+    "oat",
+    "navy",
+    "cranberry"
+   ],
+   "color_stories": [
+    "cabernet-navy",
+    "harvest"
+   ],
+   "link_tier": "2 links",
+   "description": "Navy and cabernet check boys' shirt. Boys' brushed cotton check shirt: oat/beige ground with navy and cranberry check bands.",
+   "shop_links": {
+    "everyday": "https://www.target.com/p/boys-gingham-long-sleeve-button-down-shirt-cat-jack-8482-navy-xs/-/A-53950332",
+    "mid": "https://us.boden.com/products/boys-cosy-cotton-check-shirt-oat-navy-red-check-b2779mpt"
+   },
+   "pattern_scale": "medium check",
+   "pattern_family": "oat-navy-red-check"
+  },
+  {
+   "id": "W-TOP-007",
+   "file": "w_top_007.jpg",
+   "name": "Dusty blue cable sweater",
+   "person": "women",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#8DA4BF",
+   "pattern": false,
+   "colors": [
+    "dusty blue"
+   ],
+   "color_stories": [
+    "cabernet-navy"
+   ],
+   "link_tier": "3 links",
+   "description": "Dusty blue cable sweater. Women's classic cotton cable-knit crewneck pullover in a muted French blue, with vertical cable panels down the front and sleeves, ribbed crew neckline, ribbed cuffs and hem, hip length, long sleeves.",
+   "shop_links": {
+    "everyday": "https://www.amazon.com/Amazon-Essentials-Standard-Crewneck-Sweater/dp/B07WJWVY3R",
+    "mid": "https://www.llbean.com/llb/shop/5845558?page=The-Original-Double-L-Cable-Crewneck-Sweater-Womens-Petite",
+    "splurge": "https://www.jcrew.com/p/womens/categories/clothing/sweaters/pullovers/cable-knit-crewneck-sweater/CN860"
+   }
+  },
+  {
+   "id": "W-TOP-008",
+   "file": "w_top_008.jpg",
+   "name": "Sage ribbed sweater",
+   "person": "women",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#9DAA86",
+   "pattern": false,
+   "colors": [
+    "sage"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "evergreen"
+   ],
+   "link_tier": "2 links",
+   "description": "Sage ribbed sweater. Women's soft-touch fine-knit crewneck pullover sweater in heathered sage green, with ribbed crew neckline, cuffs and hem, long sleeves, relaxed hip length.",
+   "shop_links": {
+    "everyday": "https://www.amazon.com/Amazon-Essentials-Classic-fit-Soft-Touch-Long-Sleeve/dp/B08T7J9KYB",
+    "splurge": "https://www.sezane.com/us-en/product/octobre-editions/flynn-sweater/sage-green"
+   }
+  },
+  {
+   "id": "M-TOP-018",
+   "file": "m_top_018.jpg",
+   "name": "Mid-blue crewneck sweater",
+   "person": "men",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#5B7DA3",
+   "pattern": false,
+   "colors": [
+    "mid blue"
+   ],
+   "color_stories": [
+    "cabernet-navy"
+   ],
+   "link_tier": "3 links",
+   "description": "Mid-blue crewneck sweater. Men's fine-gauge cashmere crewneck pullover in a soft faded-denim medium blue, smooth jersey knit with ribbed crew neckline, cuffs and hem, long sleeves, classic hip length.",
+   "shop_links": {
+    "everyday": "https://www.amazon.com/Amazon-Essentials-Crewneck-Cotton-Sweater/dp/B0D814ZDWP",
+    "mid": "https://www.quince.com/men/cashmere/cashmere-crewneck-sweater?color=true-navy",
+    "splurge": "https://www.vince.com/product/cashmere-crew-neck-sweater-MR8066557ACOASTALBLUE.html"
+   },
+   "also_for": [
+    "teen boys"
+   ]
+  },
+  {
+   "id": "G-OUT-005",
+   "file": "g_out_005.jpg",
+   "name": "Sage cardigan",
+   "person": "girls",
+   "category": "outerwear",
+   "layout_role": "layer",
+   "hex": "#A3B18A",
+   "pattern": false,
+   "colors": [
+    "sage"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "evergreen"
+   ],
+   "link_tier": "1 link",
+   "description": "Sage cardigan. Girls' chunky-knit button-front cardigan in soft heathered sage green marl, with crew neckline, long sleeves, ribbed cuffs and hem, and hip length.",
+   "shop_links": {
+    "mid": "https://us.boden.com/products/girls-chunky-everyday-cardigan-soft-green-marl-g6100grn"
+   }
+  },
+  {
+   "id": "B-TOP-010",
+   "file": "b_top_010.jpg",
+   "name": "Camel crewneck sweater",
+   "person": "boys",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#B58A5A",
+   "pattern": false,
+   "colors": [
+    "camel"
+   ],
+   "color_stories": [
+    "harvest",
+    "evergreen"
+   ],
+   "link_tier": "1 link",
+   "description": "Camel crewneck sweater. Boys' fine-knit cashmere crewneck pullover in heathered camel tan, smooth jersey knit with ribbed crew neckline, cuffs and hem, long sleeves.",
+   "shop_links": {
+    "splurge": "https://www.jcrew.com/p/girls/categories/clothing/tops/cashmere/kids-cashmere-crewneck-sweater/AZ817"
+   }
+  },
+  {
+   "id": "TB-TOP-006",
+   "file": "tb_top_006.jpg",
+   "name": "Cabernet crewneck sweater",
+   "person": "teen boys",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#6B1E2E",
+   "pattern": false,
+   "colors": [
+    "burgundy"
+   ],
+   "color_stories": [
+    "cabernet-navy"
+   ],
+   "link_tier": "3 links",
+   "description": "Cabernet crewneck sweater. Men's regular-fit crewneck pullover in deep burgundy wine, soft brushed knit with ribbed crew neckline, cuffs and hem, long sleeves, hip length.",
+   "shop_links": {
+    "everyday": "https://www2.hm.com/en_us/productpage.1296588002.html",
+    "mid": "https://www.quince.com/men/cashmere/cashmere-crewneck-sweater?color=true-navy",
+    "splurge": "https://www.jcrew.com/m/mens/categories/clothing/sweaters/crewneck/cashmere-crewneck-sweater/ME681"
+   }
+  },
+  {
+   "id": "TB-TOP-007",
+   "file": "tb_top_007.jpg",
+   "name": "Camel waffle henley",
+   "person": "teen boys",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#B58A5A",
+   "pattern": false,
+   "colors": [
+    "camel"
+   ],
+   "color_stories": [
+    "harvest"
+   ],
+   "link_tier": "2 links",
+   "description": "Camel waffle henley. ",
+   "shop_links": {
+    "everyday": "https://www.target.com/p/men-39-s-vintage-long-sleeve-texture-henley-shirt-goodfellow-38-co-8482-light-brown-l/-/A-95216883",
+    "mid": "https://factory.jcrew.com/p/mens/categories/clothing/tees/henley-tees/waffle-henley/CD822"
+   }
+  },
+  {
+   "id": "TB-OUT-004",
+   "file": "tb_out_004.jpg",
+   "name": "Forest corduroy overshirt",
+   "person": "teen boys",
+   "category": "outerwear",
+   "layout_role": "layer",
+   "hex": "#2E4632",
+   "pattern": false,
+   "colors": [
+    "forest"
+   ],
+   "color_stories": [
+    "evergreen"
+   ],
+   "link_tier": "2 links",
+   "description": "Forest corduroy overshirt. Men's oversized cotton corduroy shirt-jacket in dark forest green, with a turn-down collar, snap-front closure, two patch chest pockets, long sleeves with snap cuffs, and a rounded hem.",
+   "shop_links": {
+    "everyday": "https://www2.hm.com/en_us/productpage.1296200006.html",
+    "mid": "https://factory.jcrew.com/p/mens/categories/clothing/jackets-and-vests/jackets/classic-corduroy-workshirt/BT344"
+   }
+  },
+  {
+   "id": "TB-BTM-003",
+   "file": "tb_btm_003.jpg",
+   "name": "Olive corduroy pants",
+   "person": "teen boys",
+   "category": "bottom",
+   "layout_role": "bottom",
+   "hex": "#5E5A32",
+   "pattern": false,
+   "colors": [
+    "olive"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "harvest",
+    "evergreen"
+   ],
+   "link_tier": "3 links",
+   "description": "Olive corduroy pants. Men's straight-fit five-pocket corduroy pants in dark olive green, with medium wale, button and zip fly, belt loops, two front scoop pockets plus coin pocket, and back patch pockets.",
+   "shop_links": {
+    "everyday": "https://www.amazon.com/Amazon-Essentials-Straight-Pocket-Corduroy/dp/B0F3XZNTLG",
+    "mid": "https://www.llbean.com/llb/shop/128893?page=mens-beanflex-corduroy-5-pocket-pants-standard-fit-mens",
+    "splurge": "https://jcrew.com/p/CM716?color_name=retro-olive&display=all&fit=Classic"
+   }
+  },
+  {
+   "id": "TB-TOP-008",
+   "file": "tb_top_008.jpg",
+   "name": "Cream cable crewneck sweater",
+   "person": "teen boys",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#EDE4D3",
+   "pattern": false,
+   "colors": [
+    "cream"
+   ],
+   "color_stories": [
+    "cabernet-navy",
+    "harvest",
+    "evergreen",
+    "rose-olive"
+   ],
+   "link_tier": "3 links",
+   "description": "Cream cable crewneck sweater. Men's regular-fit cotton cable-knit crewneck sweater in cream, with vertical cable panels down the front and sleeves, ribbed round neckline, ribbed cuffs and hem, long sleeves.",
+   "shop_links": {
+    "everyday": "https://www2.hm.com/en_us/productpage.1315091001.html",
+    "mid": "https://www.llbean.com/llb/shop/126183?attrValue_0=Cream&itemId=514892&sku=1000096333",
+    "splurge": "https://www.jcrew.com/p/mens/categories/clothing/sweaters/crewneck/cotton-cable-knit-crewneck-sweater/BE903"
+   }
+  },
+  {
+   "id": "M-TOP-019",
+   "file": "m_top_019.jpg",
+   "name": "Olive crewneck sweater",
+   "person": "men",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#6B6A3A",
+   "pattern": false,
+   "colors": [
+    "olive"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "harvest"
+   ],
+   "link_tier": "1 link",
+   "description": "Olive crewneck sweater. Men's solid olive-green crewneck sweater in a soft, fine-gauge yak wool knit: ribbed crew neck, long sleeves with ribbed cuffs and ribbed hem, classic straight fit.",
+   "shop_links": {
+    "mid": "https://www.quince.com/men/yak-crewneck-sweater?color=fernwood-olive"
+   },
+   "also_for": [
+    "teen boys"
+   ]
+  },
+  {
+   "id": "TG-BTM-008",
+   "file": "tg_btm_008.jpg",
+   "name": "Dusty rose pleated midi skirt",
+   "person": "teen girls",
+   "category": "bottom",
+   "layout_role": "bottom",
+   "hex": "#C99393",
+   "pattern": false,
+   "colors": [
+    "dusty rose"
+   ],
+   "color_stories": [
+    "rose-olive"
+   ],
+   "link_tier": "2 links",
+   "description": "Dusty rose pleated midi skirt. Dusty rose pleated midi skirt in lightweight chiffon with fine all-over sunray-style pleats, a narrow elasticized high waistband, full lining and a flowing hem that falls to mid-calf.",
+   "shop_links": {
+    "everyday": "https://www2.hm.com/en_us/productpage.1261373006.html",
+    "mid": "https://www.lulus.com/products/i-believe-in-fairy-tales-dusty-rose-midi-skirt/236882.html"
+   }
+  },
+  {
+   "id": "TG-TOP-007",
+   "file": "tg_top_007.jpg",
+   "name": "Cream puff-sleeve blouse",
+   "person": "teen girls",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#EFE7D6",
+   "pattern": false,
+   "colors": [
+    "cream"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "cabernet-navy",
+    "harvest",
+    "evergreen",
+    "rose-olive"
+   ],
+   "link_tier": "2 links",
+   "description": "Cream puff-sleeve blouse. Cream woven cotton-viscose blouse with short gathered puff sleeves, a ruffled collar framing a V-neck opening, a button front, and a relaxed hip-length body.",
+   "shop_links": {
+    "everyday": "https://www2.hm.com/en_us/productpage.1350227002.html",
+    "splurge": "https://www.anthropologie.com/shop/by-anthropologie-short-sleeve-ruffle-blouse2"
+   }
+  },
+  {
+   "id": "T-BTM-005",
+   "file": "t_btm_005.jpg",
+   "name": "Olive corduroy toddler pants",
+   "person": "toddlers",
+   "category": "bottom",
+   "layout_role": "bottom",
+   "hex": "#5E5A32",
+   "pattern": false,
+   "colors": [
+    "olive"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "harvest"
+   ],
+   "link_tier": "2 links",
+   "description": "Olive corduroy toddler pants. Kids' pull-on cotton corduroy pants in deep green, with an elasticized drawstring waistband, relaxed straight leg, and side pockets.",
+   "shop_links": {
+    "everyday": "https://www2.hm.com/en_us/productpage.1295449003.html",
+    "splurge": "https://www.nordstrom.com/s/corduroy-pants-with-pockets-toddler-little-kid/8836023"
+   }
+  },
+  {
+   "id": "B-TOP-011",
+   "file": "b_top_011.jpg",
+   "name": "Greige cable sweater",
+   "person": "boys",
+   "category": "top",
+   "layout_role": "hero",
+   "hex": "#CFC6B4",
+   "pattern": false,
+   "colors": [
+    "oatmeal"
+   ],
+   "color_stories": [
+    "cabernet-navy",
+    "harvest",
+    "evergreen",
+    "rose-olive"
+   ],
+   "link_tier": "1 link",
+   "description": "Greige cable sweater. Boys' cotton cable-knit crewneck pullover sweater in warm ecru/oatmeal, with chunky vertical cables down the front, ribbed crew neckline, ribbed cuffs and hem, long sleeves.",
+   "shop_links": {
+    "mid": "https://www.hannaandersson.com/boys-clothing-hoodies-sweatshirts/82234-76X.html"
+   }
+  },
+  {
+   "id": "G-BTM-006",
+   "file": "g_btm_006.jpg",
+   "name": "Olive corduroy skirt",
+   "person": "girls",
+   "category": "bottom",
+   "layout_role": "bottom",
+   "hex": "#5E5A32",
+   "pattern": false,
+   "colors": [
+    "olive"
+   ],
+   "color_stories": [
+    "rose-olive",
+    "harvest"
+   ],
+   "link_tier": "2 links",
+   "description": "Olive corduroy skirt. ",
+   "shop_links": {
+    "everyday": "https://www.kohls.com/product/prd-5580568/girls-6-20-so-favorite-corduroy-skirt-in-regular-plus.jsp",
+    "splurge": "https://www.jcrew.com/p/girls/categories/clothing/shorts/skirts/button-front-corduroy-skirt/BS431?color_name=utility-green&N=8&noPopUp=true"
+   }
   }
  ]
 }
