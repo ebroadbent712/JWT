@@ -250,14 +250,9 @@ function personLine(p) {
   return `${p.name.trim()}: ${bits.join(", ")}${p.nope.trim() ? `. Won't wear: ${p.nope.trim()}` : ""}`;
 }
 function answersText() {
-  const room = A.room === ROOM_YES;
-  const photos = A.own.trim() || room;
   return [
     `Hi! Here are our answers for the outfit plan.`,
-    ...(photos ? [`(Before sending: attach photos${A.own.trim() ? " of the pieces we own" : ""}${room ? (A.own.trim() ? " and" : "") + " of the room" : ""}.)`] : []),
     ``,
-    `For ${CFG.studio}: copy everything below this line and paste it into Just Wear This in Claude${photos ? ", along with the photos" : ""}. You'll get their outfit page and printable board.`,
-    `------------------------------`,
     `Just Wear This outfit questions`,
     `${familyLabel()} (from ${A.who.trim()})`,
     ``,
