@@ -278,10 +278,17 @@ def load_items(catalog):
     return by_id
 
 
-def client_photo(path, crop=None):
+_PHOTO_CACHE = {}
+
+
+def client_photo(path, crop=None, clean=True):
     """A client's own piece, from the photo the photographer sent.
     crop = [left, top, right, bottom] as fractions of the photo, framed tightly on the garment (no faces).
-    Photos on a white background sit on the board like the flat lays; anything else gets a clean photo frame."""
+    Photos on a white background sit on the board like the flat lays. Other photos get their background
+    taken out (clean_photo.py) so they sit the same way; if that can't be done well, a clean photo frame."""
+    key = (path, tuple(crop) if crop else None, clean)
+    if key in _PHOTO_CACHE:
+        return _PHOTO_CACHE[key].copy()
     from PIL import ImageOps
     im = ImageOps.exif_transpose(Image.open(path)).convert("RGB")
     if crop:
@@ -291,7 +298,18 @@ def client_photo(path, crop=None):
     im.thumbnail((1000, 1000), Image.LANCZOS)
     a = np.asarray(im.convert("L"))
     edge = np.concatenate([a[0], a[-1], a[:, 0], a[:, -1]])
-    if edge.mean() < 240:  # not a white-background product shot: frame it as a photo
+    if edge.mean() < 240 and clean:
+        try:
+            sys.path.insert(0, HERE)
+            from clean_photo import cutout
+            cut = cutout(im)
+        except Exception:
+            cut = None
+        if cut is not None:
+            ca = np.asarray(cut.convert("L"))
+            if np.concatenate([ca[0], ca[-1], ca[:, 0], ca[:, -1]]).mean() >= 240:
+                im, edge = cut, np.concatenate([ca[0], ca[-1], ca[:, 0], ca[:, -1]])
+    if edge.mean() < 240:  # not a white-background shot and no clean cutout: frame it as a photo
         pad = max(12, im.width // 40)
         framed = Image.new("RGB", (im.width + 2 * pad, im.height + 2 * pad), "white")
         framed.paste(im, (pad, pad))
@@ -299,7 +317,8 @@ def client_photo(path, crop=None):
         d = ImageDraw.Draw(framed)
         d.rectangle([pad - 1, pad - 1, pad + im.width, pad + im.height], outline=(190, 186, 178), width=max(2, im.width // 160))
         im = framed
-    return im
+    _PHOTO_CACHE[key] = im
+    return im.copy()
 
 
 def _view_height(n):
@@ -316,6 +335,17 @@ def grid_rows(n):
     rows = -(-n // 4)
     base, extra = divmod(n, rows)
     return [base + 1] * extra + [base] * (rows - extra)
+
+
+def _lab_np(rgb):
+    """CIE Lab for an (n, 3) array of 0-1 RGB values (same math as _lab)."""
+    c = np.where(rgb > 0.04045, ((rgb + 0.055) / 1.055) ** 2.4, rgb / 12.92)
+    x = (c @ np.array([0.4124, 0.3576, 0.1805])) / 0.9505
+    y = c @ np.array([0.2126, 0.7152, 0.0722])
+    z = (c @ np.array([0.0193, 0.1192, 0.9505])) / 1.089
+    f = lambda t: np.where(t > 0.008856, np.cbrt(t), 7.787 * t + 16 / 116)
+    fx, fy, fz = f(x), f(y), f(z)
+    return np.stack([116 * fy - 16, 500 * (fx - fy), 200 * (fy - fz)], 1)
 
 
 def _lab(hexs):
@@ -950,8 +980,22 @@ def build(plan_path, out_dir):
         pal = plan["palette"]
         weight_hex = [_lab(items_by_id[i]["hex"]) for p in plan["people"] for i in p["items"]
                       if items_by_id[i].get("hex") and items_by_id[i]["category"] not in ("shoes", "accessory")]
+        # a client's photographed piece counts with its real colors: a swatch passes if at least 2% of the piece is close to it
+        photo_px = []
+        for o in plan.get("owned", []):
+            if isinstance(o, dict) and o.get("photo"):
+                try:
+                    ph = client_photo(o["photo"], o.get("crop"), o.get("clean", True)).convert("RGB")
+                    ph.thumbnail((160, 160))
+                    px = np.asarray(ph).reshape(-1, 3).astype(float) / 255
+                    px = px[px.min(1) < 0.93]
+                    if len(px):
+                        photo_px.append(_lab_np(px))
+                except Exception:
+                    pass
         for sw in pal:
-            if not any(sum((a - b) ** 2 for a, b in zip(_lab(sw["hex"]), l)) ** 0.5 < 20 for l in weight_hex):
+            in_photo = any((np.sqrt(((P - np.array(_lab(sw["hex"]))) ** 2).sum(1)) < 20).mean() >= 0.02 for P in photo_px)
+            if not in_photo and not any(sum((a - b) ** 2 for a, b in zip(_lab(sw["hex"]), l)) ** 0.5 < 20 for l in weight_hex):
                 print(f"CHECK (fix before delivering): palette swatch {sw['name']} isn't worn by anyone on the board; drop it or swap it for a color they wear.")
     else:
         pal = board_palette(plan, items_by_id, catalog)
@@ -966,7 +1010,7 @@ def build(plan_path, out_dir):
                 items_by_id[o["id"]] = dict(items_by_id[o["id"]], name=o["label"])
             if o.get("photo") and o["id"] in items_by_id:
                 try:
-                    im = client_photo(o["photo"], o.get("crop"))
+                    im = client_photo(o["photo"], o.get("crop"), o.get("clean", True))
                     items_by_id[o["id"]] = dict(items_by_id[o["id"]], _img=im, _w=im.width, _h=im.height)
                 except Exception as e:
                     print(f"CHECK (fix before delivering): couldn't use the photo {o['photo']} ({e}); the library picture is shown instead.")

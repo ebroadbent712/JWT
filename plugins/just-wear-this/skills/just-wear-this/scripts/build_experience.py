@@ -160,7 +160,7 @@ def build(plan_path, out_dir, pdf=False):
         name = owned.get(i, {}).get("label") or it["name"]
         if owned.get(i, {}).get("photo"):
             try:
-                im = bb.client_photo(owned[i]["photo"], owned[i].get("crop"))
+                im = bb.client_photo(owned[i]["photo"], owned[i].get("crop"), owned[i].get("clean", True))
             except Exception:
                 im = Image.open(os.path.join(LIB, "images", it["file"]))
         else:
