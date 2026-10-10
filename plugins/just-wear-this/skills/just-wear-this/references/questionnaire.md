@@ -1,6 +1,6 @@
 # Just Wear This client questionnaire
 
-Clients answer six questions (about three minutes on a phone). The easiest way is the photographer's questionnaire page (`scripts/build_questionnaire.py`): one public link she sends every client, which ends with Text / Email / Copy my answers. Its message starts "Just Wear This outfit questions" and follows the numbering below. The same questions can also be pasted into any form. The photographer adds the session details she already knows. Answers can arrive in any format: pasted from Google Forms, a client system like HoneyBook or Dubsado, an email or a text. Read them as written; never require a specific format.
+Clients answer six questions (about three minutes on a phone). The easiest way is the photographer's questionnaire page (`scripts/build_questionnaire.py`): one public link she sends every client, which ends with Text / Email / Copy my answers. Its message opens with a short greeting and a note to the studio (ignore those lines), then "Just Wear This outfit questions" and the numbered answers below. The same questions can also be pasted into any form. The photographer adds the session details she already knows. Answers can arrive in any format: pasted from Google Forms, a client system like HoneyBook or Dubsado, an email or a text. Read them as written; never require a specific format.
 
 ## Photographer adds (from the booking)
 
