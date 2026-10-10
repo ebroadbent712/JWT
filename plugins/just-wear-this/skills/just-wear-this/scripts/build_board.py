@@ -411,8 +411,8 @@ def draw_board_page(c, plan, settings, items_by_id, numbering):
                   len(plan.get("subtitle_right", "")) * 6.3 + 40, 150)
     draw_family_name(c, M, PH - M - 27, plan["family_name"], 30, PW - 2 * M - right_w - 24)
     c.setFont("Anton", 9.5)
-    c.drawString(M + 1, PH - M - 46, "JUST WEAR THIS")
-    aw = pdfmetrics.stringWidth("JUST WEAR THIS", "Anton", 9.5)
+    c.drawString(M + 1, PH - M - 46, "JUST WEAR THIS.")
+    aw = pdfmetrics.stringWidth("JUST WEAR THIS.", "Anton", 9.5)
     spaced(c, M + 1 + aw + 9, PH - M - 46, "OUTFIT PLAN", "Jost", 6.8, 2.1)
     c.setFillColor(INK)
     c.setFont("Bodoni-Italic", 16)
@@ -766,7 +766,7 @@ def draw_details_page(c, plan, settings, items_by_id, numbering, uses):
     y = PH - M - 10
     c.setFillColor(INK)
     c.setFont("Anton", 15)
-    c.drawString(M, y, "JUST WEAR THIS")
+    c.drawString(M, y, "JUST WEAR THIS.")
     spaced(c, PW - M, y + 3, f"{plan['family_name']}  ·  THE DETAILS".upper(), "Jost", 6.5, 1.9, align="right")
     c.setStrokeColor(INK)
     c.setLineWidth(0.6)
@@ -820,7 +820,7 @@ def draw_details_page(c, plan, settings, items_by_id, numbering, uses):
         y = PH - M - 10
         c.setFillColor(INK)
         c.setFont("Anton", 15)
-        c.drawString(M, y, "JUST WEAR THIS")
+        c.drawString(M, y, "JUST WEAR THIS.")
         spaced(c, PW - M, y + 3, f"{plan['family_name']}  ·  THE DETAILS, CONTINUED".upper(), "Jost", 6.5, 1.9, align="right")
         c.setStrokeColor(INK)
         c.setLineWidth(0.6)

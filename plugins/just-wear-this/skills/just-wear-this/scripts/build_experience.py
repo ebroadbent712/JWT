@@ -332,7 +332,7 @@ a.rreach{text-decoration:underline;text-decoration-color:var(--line);text-underl
 </style>
 
 <div class="wrap">
-  <header class="top"><span class="mark">Just Wear This</span><span class="by">{{STUDIO}}</span></header>
+  <header class="top"><span class="mark">Just Wear This.</span><span class="by">{{STUDIO}}</span></header>
 
   <section class="hero">
     {{PHOTO}}

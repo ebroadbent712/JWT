@@ -109,7 +109,7 @@ textarea:focus{box-shadow:inset 0 0 0 1px var(--ink)}
 </style>
 
 <div class="wrap">
-  <div class="top"><span class="mark">Just Wear This</span><span class="by">{{STUDIO}}</span></div>
+  <div class="top"><span class="mark">Just Wear This.</span><span class="by">{{STUDIO}}</span></div>
   <div class="bar" aria-hidden="true"><i id="bar"></i></div>
   <main id="main" aria-live="polite"></main>
 </div>
