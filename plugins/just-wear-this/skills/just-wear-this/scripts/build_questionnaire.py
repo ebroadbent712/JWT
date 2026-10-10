@@ -12,7 +12,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 def build(settings, out_dir):
     studio = (settings.get("studio_name") or "").strip()
     if not studio:
-        raise SystemExit("studio_name is missing: ask the photographer for her studio details first.")
+        raise SystemExit("studio_name is missing: ask the photographer for their business details first.")
     email = (settings.get("contact_email") or "").strip()
     phone = (settings.get("contact_phone") or "").strip()
     texting = bool(settings.get("texting", True))

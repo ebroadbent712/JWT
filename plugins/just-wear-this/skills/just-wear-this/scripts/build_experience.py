@@ -180,7 +180,7 @@ def build(plan_path, out_dir, pdf=False):
 
     e = html.escape
     if not (settings.get("studio_name") or "").strip():
-        print("CHECK (fix before delivering): no studio name. Ask the photographer for her studio details and put them in settings_override.")
+        print("CHECK (fix before delivering): no studio name. Ask the photographer for their business details and put them in settings_override.")
     studio = settings.get("studio_name") or "your photographer"
     website = settings.get("website") or ""
     swatches = "".join(f'<li><span class="chip" style="background:{e(sw["hex"])}"></span><span>{e(sw["name"])}</span></li>' for sw in pal)
